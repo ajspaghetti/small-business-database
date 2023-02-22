@@ -15,7 +15,6 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.integer :city_id
       t.integer :county_id
       t.integer :state_id
-      t.integer :country_id, :default => 1 # United States
       t.boolean :tax_number_onfile?, :null => false # yes/no
       # image upload of tax_number
       t.integer :social_security_number_id, :default => 0

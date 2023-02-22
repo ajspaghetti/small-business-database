@@ -13,7 +13,6 @@ class Company < ApplicationRecord
     has_one :city
     has_one :county
     has_one :state
-    has_one :country
     
     # compliance
     has_one :employee_identification_number

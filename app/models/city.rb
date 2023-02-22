@@ -11,5 +11,4 @@ class City < ApplicationRecord
     has_many :addresses, through: :zip_codes
     belongs_to :county
     belongs_to :state
-    belongs_to :country
 end
