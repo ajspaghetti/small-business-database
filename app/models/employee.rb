@@ -13,10 +13,8 @@ class Employee < ApplicationRecord
 
     #regional database
     has_one :address
-    has_one :zip_code
-    has_one :city
-    has_one :county
-    has_one :state
+    has_one :zip_code, through: :address
+
 end
 
 ## HRIS scope:

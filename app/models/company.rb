@@ -9,10 +9,7 @@ class Company < ApplicationRecord
     
     # regional database
     has_one :address # main headquarters for billing
-    has_one :zip_code
-    has_one :city
-    has_one :county
-    has_one :state
+    has_one :zip_code, through: :address
     
     # compliance
     has_one :employee_identification_number
