@@ -1,5 +1,5 @@
 class County < ApplicationRecord
-    has_many :cities
+    has_many :zip_codes
+    has_many :cities, through: :zip_codes
     belongs_to :state
-    belongs_to :country
 end
