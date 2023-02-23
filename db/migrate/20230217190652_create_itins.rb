@@ -4,6 +4,8 @@ class CreateItins < ActiveRecord::Migration[7.0]
       t.integer :itin_number
       t.date :itin_valid_since
       t.date :itin_valid_until
+      
+      t.timestamps
     end
   end
 end

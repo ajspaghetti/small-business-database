@@ -4,6 +4,8 @@ class CreateEmployerIdentificationNumbers < ActiveRecord::Migration[7.0]
       t.integer :ein_number
       t.date :ein_valid_since
       t.date :ein_valid_until
+
+      t.timestamps
     end
   end
 end
