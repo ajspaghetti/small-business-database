@@ -4,12 +4,11 @@ class Project < ApplicationRecord
     belongs_to :company
     has_many :employees
     has_many :clients
+    has_many :slcs
+    has_many :subcontractors, through: :slcs
 
     # regional database -- are the through relationships like this or different...
     has_one :address
     has_one :zip_code
-    has_one :city, through: :zip_code
-    has_one :county, through: :zip_code
-    has_one :state, through: :zip_code
 
 end

@@ -1,9 +1,10 @@
 class User < ApplicationRecord
     # project management
-    has_many :companies
-    has_many :projects, through: :companies
-    has_many :clients, through: :companies
+    has_many :projects
+    has_many :companies, through: :projects
+    has_many :clients, through: :projects
     has_many :sales_leads
+    has_many :subcontractor_leads
 
     # hris
     has_many :hiring_leads

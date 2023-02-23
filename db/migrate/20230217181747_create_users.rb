@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :password#_digest
       t.string :email_id
       t.integer :access_level_id
-  
     end
   end
 end

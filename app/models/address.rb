@@ -1,7 +1,6 @@
 class Address < ApplicationRecord
-    
     # regional database
-    has_one :zip_code
+    belongs_to :zip_code
 
     # hris
     belongs_to :employee
@@ -10,5 +9,8 @@ class Address < ApplicationRecord
     #project management
     belongs_to :company
     belongs_to :project
+    belongs_to :subcontractor
+    belongs_to :slc
     belongs_to :sales_lead
+    belongs_to :subcontractor_lead
 end
