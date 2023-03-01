@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
     belongs_to :user  
-    # belongs_to :address
+    # has_one :address
     has_many :contracts
     has_many :employees, through: :contracts
     has_many :subcontractors, through: :contracts
