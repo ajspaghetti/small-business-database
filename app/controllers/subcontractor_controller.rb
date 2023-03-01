@@ -34,7 +34,7 @@ class SubcontractorController < ApplicationController
     private
 
     def sub_params
-        params_permit(:company_legal_name, :company_dba, :primary_poc_name, :poc_role, :poc_phone, :poc_email, :tax_number, :skill_id, :active?, :notes)
+        params_permit(:company_legal_name, :company_dba, :address_id, :primary_poc_name, :poc_role, :poc_phone, :poc_email, :sub_tax_number, :skill_id, :active?, :sub_notes)
     end
 
     def not_found

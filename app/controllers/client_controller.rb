@@ -34,7 +34,7 @@ class ClientController < ApplicationController
     private
 
     def client_params
-        params_permit(:first_name, :last_name, :job_title, :phone, :email, :client_company_id, :notes)
+        params_permit(:first_name, :last_name, :job_title, :client_phone, :client_email, :client_company_id, :client_notes)
     end
 
     def not_found

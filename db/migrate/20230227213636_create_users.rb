@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :password#_digest
       t.string :first_name
       t.string :last_name
-      t.string :phone
-      t.string :email
+      t.string :user_phone
+      t.string :user_email
     end
   end
 end

@@ -12,7 +12,7 @@ class UserController < ApplicationController
 
     def show
         user = User.find(params[:id])
-        render json: user, status: :ok
+        render json: user, status: :ok #, serializer: UserContractsSerializer
     end
 
     def create
@@ -34,7 +34,7 @@ class UserController < ApplicationController
     private
 
     def user_params
-        params_permit(:username, :password, :first_name, :last_name, :phone, :email)
+        params_permit(:username, :password, :first_name, :last_name, :user_phone, :user_email)
     end
 
     def not_found

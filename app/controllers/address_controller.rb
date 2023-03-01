@@ -12,7 +12,7 @@ class AddressController < ApplicationController
 
     def show
         address = Address.find(params[:id])
-        render json: address, status: :ok
+        render json: address, status: :ok #, serializer: AddressZipSerializer
     end
 
     def create

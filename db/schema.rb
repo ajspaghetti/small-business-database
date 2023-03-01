@@ -24,14 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
     t.string "legal_name"
     t.string "dba_name"
     t.string "industry"
-    t.string "phone"
-    t.string "email"
+    t.integer "address_id"
+    t.string "co_phone"
+    t.string "co_email"
     t.string "primary_poc_name"
     t.string "poc_role"
     t.string "poc_phone"
     t.string "poc_email"
     t.float "annual_revenue"
-    t.text "notes"
+    t.text "cc_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,10 +41,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
     t.string "first_name"
     t.string "last_name"
     t.string "job_title"
-    t.string "phone"
-    t.string "email"
+    t.string "client_phone"
+    t.string "client_email"
     t.integer "client_company_id"
-    t.text "notes"
+    t.text "client_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,8 +69,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
     t.string "last_name"
     t.string "suffix"
     t.string "gender"
-    t.string "phone"
-    t.string "email"
+    t.string "emp_phone"
+    t.string "emp_email"
+    t.integer "address_id"
     t.string "tax_number"
     t.string "job_title"
     t.integer "skill_id"
@@ -79,7 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
     t.float "annual_salary"
     t.string "pto_policy"
     t.boolean "active?"
-    t.text "notes"
+    t.text "emp_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,7 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
   create_table "projects", force: :cascade do |t|
     t.string "project_name"
     t.string "project_desc"
-    t.text "notes"
+    t.text "project_notes"
+    t.integer "address_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -100,14 +103,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
   create_table "subcontractors", force: :cascade do |t|
     t.string "company_legal_name"
     t.string "company_dba"
+    t.integer "address_id"
     t.string "primary_poc_name"
     t.string "poc_role"
     t.string "poc_phone"
     t.string "poc_email"
-    t.string "tax_number"
+    t.string "sub_tax_number"
     t.integer "skill_id"
     t.boolean "active?"
-    t.text "notes"
+    t.text "sub_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -117,8 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
     t.string "password"
     t.string "first_name"
     t.string "last_name"
-    t.string "phone"
-    t.string "email"
+    t.string "user_phone"
+    t.string "user_email"
   end
 
   create_table "zips", force: :cascade do |t|
@@ -128,8 +132,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
     t.string "city"
     t.string "state"
     t.string "county"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

@@ -13,7 +13,7 @@ class ClientCompanyController < ApplicationController
 
     def show
         company = ClientCompany.find(params[:id])
-        render json: company, status: :ok
+        render json: company, status: :ok #, serializer: ClientCompanyAddressSerializer
     end
 
     def create
@@ -35,7 +35,7 @@ class ClientCompanyController < ApplicationController
     private
 
     def company_params
-        params_permit(:legal_name, :dba_name, :industry, :phone, :email, :primary_poc_name, :poc_role, :poc_phone, :poc_email, :annual_revenue, :notes)
+        params_permit(:legal_name, :dba_name, :industry, :co_phone, :co_email, :primary_poc_name, :poc_role, :poc_phone, :poc_email, :annual_revenue, :cc_notes)
     end
 
     def not_found
