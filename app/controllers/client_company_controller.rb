@@ -1,54 +1,45 @@
 class ClientCompanyController < ApplicationController
-    get "/companies" do
+    
+    # skip_before_action :authenticated_user
+
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    
+    
+    def index
         companies = ClientCompany.all
-        companies.to_json
+        render json: companies, status: :ok
     end
 
-    get "/companies/:id" do
+    def show
         company = ClientCompany.find(params[:id])
-        company.to_json
+        render json: company, status: :ok
     end
 
-    post "/companies" do
-        new_company = ClientCompany.create!(
-            legal_name: params[:legal_name],
-            dba_name: params[:dba_name],
-            industry: params[:industry],
-            # address_id: params[:address_id [include: :zip]],
-            phone: params[:phone],
-            email: params[:email],
-            primary_poc_name: params[:primary_poc_name],
-            poc_role: params[:poc_role],
-            poc_phone: params[:poc_phone],
-            poc_email: params[:poc_email],
-            annual_revenue: params[:annual_revenue],
-            notes: params[:notes]
-        )
-        new_company.to_json
+    def create
+        new_company = ClientCompany.create!(company_params)
+        render json: new_company, status: :created
     end
 
-    patch "/companies/:id" do
-        company = ClientCompany.find(params[:id])
-        company.update(
-            legal_name: params[:legal_name],
-            dba_name: params[:dba_name],
-            industry: params[:industry],
-            # address_id: params[:address_id [include: :zip]],
-            phone: params[:phone],
-            email: params[:email],
-            primary_poc_name: params[:primary_poc_name],
-            poc_role: params[:poc_role],
-            poc_phone: params[:poc_phone],
-            poc_email: params[:poc_email],
-            annual_revenue: params[:annual_revenue],
-            notes: params[:notes]
-        )
-        company.to_json
+    def update
+        update_company = ClientCompany.find(params[:id]).update!(company_params)
+        render json: update_company, status: :accepted
     end
 
-    delete "/companies/:id" do
-        company = ClientCompany.find(params[:id])
-        company.destroy
+    def destroy
+        delete_company = ClientCompany.find(params[:id]).destroy!
+        render json: delete_company
+        head :no_content
+    end
+
+    private
+
+    def company_params
+        params_permit(:legal_name, :dba_name, :industry, :phone, :email, :primary_poc_name, :poc_role, :poc_phone, :poc_email, :annual_revenue, :notes)
+    end
+
+    def not_found
+        render json: { error: "Company not found"}, status: :not_found
     end
 
 end

@@ -1,48 +1,44 @@
 class ContractController < ApplicationController
-    get "/contracts" do
+    
+    # skip_before_action :authenticated_user
+
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    
+    def index
         contracts = Contract.all
-        contracts.to_json
+        render json: contracts, status: :ok
     end
 
-    get "/contracts/:id" do
+    def show
         contract = Contract.find(params[:id])
-        contract.to_json
+        render json: contract, status: :ok
     end
 
-    post "/contracts" do
-        new_contract = Contract.create!(
-            contract_title: params[:contract_title],
-            contract_value: params[:contract_value],
-            contract_notes: params[:contract_notes],
-            project_id: params[:project_id],
-            client_company_id: params[:client_company_id],
-            client_id: params[:client_id],
-            employee_id: params[:employee_id],
-            subcontractor_id: params[:subcontractor_id],
-            user_id: params[:user_id]
-        )
-        new_contract.to_json
+    def create
+        new_contract = Contract.create!(contract_params)
+        render json: new_contract, status: :created
     end
 
-    patch "/contracts/:id" do
-        contract = Contract.find(params[:id])
-        contract.update(
-            contract_title: params[:contract_title],
-            contract_value: params[:contract_value],
-            contract_notes: params[:contract_notes],
-            project_id: params[:project_id],
-            client_company_id: params[:client_company_id],
-            client_id: params[:client_id],
-            employee_id: params[:employee_id],
-            subcontractor_id: params[:subcontractor_id],
-            user_id: params[:user_id]
-        )
-        contract.to_json
+    def update
+        update_contract = Contract.find(params[:id]).update!(contract_params)
+        render json: update_contract, status: :accepted
     end
 
-    delete "/contracts/:id" do
-        contract = Contract.find(params[:id])
-        contract.destroy
+    def destroy
+        delete_contract = Contract.find(params[:id]).destroy!
+        render json: delete_contract
+        head :no_content
+    end
+
+    private
+
+    def contract_params
+        params_permit(:contract_title, :contract_value, :contract_notes, :project_id, :client_company_id, :client_id, :employee_id, :subcontractor_id, :user_id)
+    end
+
+    def not_found
+        render json: { error: "Contract not found"}, status: :not_found
     end
 
 end

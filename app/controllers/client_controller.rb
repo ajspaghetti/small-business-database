@@ -1,43 +1,44 @@
 class ClientController < ApplicationController
-    get "/clients" do
+    
+    # skip_before_action :authenticated_user
+
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    
+    def index
         clients = Client.all
-        clients.to_json
+        render json: clients, status: :ok
     end
 
-    get "/clients/:id" do
+    def show
         client = Client.find(params[:id])
-        client.to_json
+        render json: client, status: :ok
     end
 
-    post "/clients" do
-        new_client = Client.create!(
-            first_name: params[:first_name],
-            last_name: params[:last_name],
-            job_title: params[:job_title],
-            phone: params[:phone],
-            email: params[:emails],
-            client_company_id: params[:client_company_id],
-            notes: params[:notes]
-        )
-        new_client.to_json
+    def create
+        new_client = Client.create!(client_params)
+        render json: new_client, status: :created
     end
 
-    patch "/clients/:id" do
-        client = Client.find(params[:id])
-        client.update(
-            first_name: params[:first_name],
-            last_name: params[:last_name],
-            job_title: params[:job_title],
-            phone: params[:phone],
-            email: params[:emails],
-            client_company_id: params[:client_company_id],
-            notes: params[:notes]
-        )
-        client.to_json
+    def update
+        update_client = Client.find(params[:id]).update!(client_params)
+        render json: update_client, status: :accepted
     end
 
-    delete "/clients/:id" do
-        client = Client.find(params[:id])
-        client.destroy
+    def destroy
+        delete_client = Client.find(params[:id]).destroy!
+        render json: delete_client
+        head :no_content
     end
+
+    private
+
+    def client_params
+        params_permit(:first_name, :last_name, :job_title, :phone, :email, :client_company_id, :notes)
+    end
+
+    def not_found
+        render json: { error: "Client not found"}, status: :not_found
+    end
+
 end
