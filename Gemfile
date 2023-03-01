@@ -48,9 +48,3 @@ end
 
 
 gem "active_model_serializers", "~> 0.10.13"
-
-# CSV
-gem "csv", "~> 3.2.6"
-
-# multi_xml
-gem "multi_xml", "~> 0.6.0"

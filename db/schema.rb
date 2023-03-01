@@ -10,59 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_20_205904) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "access_levels", force: :cascade do |t|
-    t.string "access_type"
+  create_table "addresses", force: :cascade do |t|
+    t.string "line_one"
+    t.string "line_two"
+    t.integer "zip_id"
   end
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "current_address"
-    t.string "current_address_line_two"
-    t.integer "zip_code_id"
+  create_table "client_companies", force: :cascade do |t|
+    t.string "legal_name"
+    t.string "dba_name"
+    t.string "industry"
+    t.string "phone"
+    t.string "email"
+    t.string "primary_poc_name"
+    t.string "poc_role"
+    t.string "poc_phone"
+    t.string "poc_email"
+    t.float "annual_revenue"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "job_title_id"
-    t.integer "company_id"
-    t.integer "phone_number_id"
-    t.integer "email_id"
-  end
-
-  create_table "companies", force: :cascade do |t|
-    t.string "company_name"
-    t.string "company_category"
-    t.integer "city_id"
-    t.integer "phone_number_id"
-    t.integer "email_id"
-    t.integer "client_id"
-  end
-
-  create_table "emails", force: :cascade do |t|
-    t.string "email_address"
-    t.integer "employee_id"
-    t.integer "client_id"
-    t.integer "company_id"
-    t.integer "user_id"
-    t.integer "sales_lead_id"
-    t.integer "hiring_lead_id"
+    t.string "job_title"
+    t.string "phone"
+    t.string "email"
+    t.integer "client_company_id"
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "emp_categories", force: :cascade do |t|
-    t.string "category_title"
-    t.string "category_abbreviation"
-  end
-
-  create_table "employee_identification_numbers", force: :cascade do |t|
-    t.integer "ein_number"
-    t.date "ein_valid_since"
-    t.date "ein_valid_until"
+  create_table "contracts", force: :cascade do |t|
+    t.string "contract_title"
+    t.float "contract_value"
+    t.text "contract_notes"
+    t.integer "project_id"
+    t.integer "client_company_id"
+    t.integer "client_id"
+    t.integer "employee_id"
+    t.integer "subcontractor_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "employees", force: :cascade do |t|
@@ -71,109 +68,46 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_205904) do
     t.string "last_name"
     t.string "suffix"
     t.string "gender"
-    t.integer "emp_category_id"
-    t.integer "emp_id_code"
-    t.integer "phone_number_id"
-    t.integer "address_id"
-    t.integer "zip_code_id"
-    t.boolean "tax_number_onfile?"
-    t.integer "social_security_number_id"
-    t.integer "itin_id"
-    t.date "date_of_birth"
-    t.string "city_of_birth"
-    t.string "country_of_birth"
-    t.boolean "id_pic_onfile?"
-    t.string "id_pic_type"
-    t.string "id_number"
-    t.boolean "w_four?"
-    t.boolean "w_nine?"
-    t.integer "job_title_id"
+    t.string "phone"
+    t.string "email"
+    t.string "tax_number"
+    t.string "job_title"
+    t.integer "skill_id"
     t.date "start_date"
-    t.boolean "hourly_or_salary?"
-    t.integer "current_hourly_rate"
-    t.integer "current_annual_salary"
-    t.boolean "government_eligible?"
-    t.integer "gov_title_id"
-    t.integer "current_gov_hourly_rate"
-    t.integer "current_gov_annual_salary"
-    t.boolean "insured?"
-    t.string "insurance_details"
+    t.string "hourly_or_salary"
+    t.float "hourly_rate"
+    t.float "annual_salary"
+    t.string "pto_policy"
     t.boolean "active?"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "gov_titles", force: :cascade do |t|
-    t.string "gov_job_title"
-  end
-
-  create_table "hiring_leads", force: :cascade do |t|
-    t.string "potential_hire_name"
-    t.string "experience_level"
-    t.integer "phone_number_id"
-    t.integer "email_id"
-    t.integer "skill_id"
-    t.boolean "still_interested?"
-  end
-
-  create_table "itins", force: :cascade do |t|
-    t.integer "itin_number"
-    t.date "itin_valid_since"
-    t.date "itin_valid_until"
-  end
-
-  create_table "job_titles", force: :cascade do |t|
-    t.string "job_title"
-  end
-
-  create_table "languages", force: :cascade do |t|
-    t.string "language_name"
-  end
-
-  create_table "phone_numbers", force: :cascade do |t|
-    t.string "country_code", default: "+1"
-    t.integer "phone"
-    t.boolean "active?"
-    t.integer "user_id", null: false
-    t.integer "company_id", null: false
-    t.integer "employee_id", null: false
-    t.integer "client_id", null: false
-    t.integer "hiring_lead_id", null: false
-    t.integer "sales_lead_id", null: false
+  create_table "projects", force: :cascade do |t|
+    t.string "project_name"
+    t.string "project_desc"
+    t.text "notes"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "project_title"
-    t.boolean "gov?"
-    t.integer "address_id"
-    t.integer "zip_code_id"
-    t.integer "employee_id"
-    t.integer "user_id"
-    t.integer "company_id"
-    t.integer "client_id"
-  end
-
-  create_table "sales_leads", force: :cascade do |t|
-    t.string "contact_name"
-    t.integer "company_id"
-    t.integer "phone_number_id"
-    t.string "type_of_work"
-    t.string "opportunity_value"
-    t.boolean "converted_successfully?"
-    t.boolean "closed?"
-  end
-
   create_table "skills", force: :cascade do |t|
-    t.string "skill_title"
+    t.string "skill_name"
   end
 
-  create_table "social_security_numbers", force: :cascade do |t|
-    t.integer "ssn_number"
-    t.date "ssn_valid_since"
-    t.date "ssn_valid_until"
+  create_table "subcontractors", force: :cascade do |t|
+    t.string "company_legal_name"
+    t.string "company_dba"
+    t.string "primary_poc_name"
+    t.string "poc_role"
+    t.string "poc_phone"
+    t.string "poc_email"
+    t.string "tax_number"
+    t.integer "skill_id"
+    t.boolean "active?"
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -181,17 +115,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_205904) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
-    t.string "email_id"
-    t.integer "access_level_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "email"
   end
 
-  create_table "zip_codes", force: :cascade do |t|
+  create_table "zips", force: :cascade do |t|
     t.integer "zip_code"
     t.decimal "latitude"
     t.decimal "longitude"
-    t.integer "city"
-    t.integer "state"
-    t.integer "county"
+    t.string "city"
+    t.string "state"
+    t.string "county"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -1,4 +1,4 @@
 class Skill < ApplicationRecord
-    belongs_to :employee
-    belongs_to :hiring_lead
+    has_and_belongs_to_many :employees
+    has_and_belongs_to_many :subcontractors
 end

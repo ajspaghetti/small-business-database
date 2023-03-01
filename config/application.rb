@@ -12,8 +12,6 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
-require "csv"
-require "multi_xml"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -44,6 +42,5 @@ module ExampleProject
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
     config.action_dispatch.cookies_same_site_protection = :strict
-    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
