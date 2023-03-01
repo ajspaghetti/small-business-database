@@ -2,7 +2,6 @@ class ApplicationController < ActionController::API
   include ActionController::Cookies
 
   # before_action :authenticated_user
-  # # include SessionsHelper
 
   # private
 
