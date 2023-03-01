@@ -6,9 +6,9 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.string :last_name
       t.string :suffix
       t.string :gender
-      t.string :phone
-      t.string :email
-      # t.integer :address_id
+      t.string :emp_phone
+      t.string :emp_email
+      t.integer :address_id
       t.string :tax_number # social or itin
       t.string :job_title
       t.integer :skill_id
@@ -18,7 +18,7 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.float :annual_salary
       t.string :pto_policy
       t.boolean :active?
-      t.text :notes
+      t.text :emp_notes
       
       t.timestamps
     end

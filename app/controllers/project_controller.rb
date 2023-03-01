@@ -34,7 +34,7 @@ class ProjectController < ApplicationController
     private
 
     def project_params
-        params_permit(:project_name, :project_desc, :notes, :user_id)
+        params_permit(:project_name, :project_desc, :project_notes, :address_id, :user_id)
     end
 
     def not_found

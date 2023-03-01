@@ -22,14 +22,15 @@ puts "Seeding users..."
         password: "password",
         first_name: "Admin",
         last_name: "Admin",
-        phone: "+1 571 319 1994",
-        email: "alexjspagnoli@outlook.com"
+        user_phone: "+1 571 319 1994",
+        user_email: "alexjspagnoli@outlook.com"
     )
 puts "Seeding projects..."
     p1 = Project.create!(
         project_name: "Example Project 1",
         project_desc: "Description of project 1",
-        notes: "...notes...",
+        project_notes: "...notes...",
+        address_id: 1,
         user_id: u1.id
     )
 puts "Seeding client_companies..."
@@ -37,44 +38,46 @@ puts "Seeding client_companies..."
         legal_name: "Company Legal Name",
         dba_name: "Company DBA Name",
         industry: "Technology",
-        phone: "+1 703 555 2222",
-        email: "company@example.com",
+        address_id: 2,
+        co_phone: "+1 703 555 2222",
+        co_email: "company@example.com",
         primary_poc_name: "Steve French",
         poc_role: "Project Manager",
         poc_phone: "571 555 1111",
         poc_email: "steve.french@example.com",
         annual_revenue: 500000.55,
-        notes: "...notes..."
+        cc_notes: "...notes..."
     )
 puts "Seeding clients..."
     k1 = Client.create!(
         first_name: "Steve",
         last_name: "French",
         job_title: "Project Manager",
-        phone: "+1 571 555 1111",
-        email: "steve.french@example.com",
+        client_phone: "+1 571 555 1111",
+        client_email: "steve.french@example.com",
         client_company_id: o1.id,
-        notes: "...notes..."
+        client_notes: "...notes..."
     )
 puts "Seeding skills..."
     s1 = Skill.create!(
         skill_name: "Ruby on Rails",
     )
     s2 = Skill.create!(
-        skill_name: "Ruby on Rails",
+        skill_name: "Javascript",
     )
 puts "Seeding subcontractors..."
     h1 = Subcontractor.create!(
         company_legal_name: "Subcontractor Legal Name",
         company_dba: "Subcontractor DBA Name",
+        address_id: 3,
         primary_poc_name: "Johnny English",
         poc_role: "Owner",
         poc_phone: "+1 202 555 1234",
         poc_email: "johnny.english@example.com",
-        tax_number: "12-3456789",
+        sub_tax_number: "12-3456789",
         skill_id: s2.id,
         active?: true,
-        notes: "...notes..."
+        sub_notes: "...notes..."
     )
 puts "Seeding employees..."
     e1 = Employee.create!(
@@ -83,8 +86,9 @@ puts "Seeding employees..."
         last_name: "Reindeer",
         suffix: "iii",
         gender: "M",
-        phone: "+1 999 555 1234",
-        email: "rudy@example.com",
+        emp_phone: "+1 999 555 1234",
+        emp_email: "rudy@example.com",
+        address_id: 4,
         tax_number: "111-11-1111",
         job_title: "Engineer",
         skill_id: s1.id,
@@ -94,7 +98,7 @@ puts "Seeding employees..."
         annual_salary: 0.00,
         pto_policy: "160 Hours/year, 80 Hours rollover (max 300 hours)",
         active?: true,
-        notes: "...notes..."
+        emp_notes: "...notes..."
     )
 puts "Seeding contracts..."
     c1 = Contract.create!(
@@ -112,21 +116,21 @@ puts "Seeding addresses..."
     a1 = Address.create!(
         line_one: "1234 Test Street",
         line_two: "#1",
-        zip_id: 0
+        zip_id: 42741
     )
     a2 = Address.create!(
         line_one: "1234 Test Street",
         line_two: "#2",
-        zip_id: 0
+        zip_id: 42740
     )
     a3 = Address.create!(
         line_one: "1234 Test Street",
         line_two: "#3",
-        zip_id: 0
+        zip_id: 42739
     )
     a4 = Address.create!(
         line_one: "1234 Test Street",
         line_two: "#4",
-        zip_id: 0
+        zip_id: 42738
     )
 puts "...done seeding!"

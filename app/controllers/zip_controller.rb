@@ -12,7 +12,7 @@ class ZipController < ApplicationController
 
     def show
         zip = Zip.find(params[:id])
-        render json: zip, status: :ok
+        render json: zip, status: :ok, serializer: ZipAddressesSerializer
     end
 
     private
