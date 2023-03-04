@@ -1,4 +1,4 @@
-class ClientController < ApplicationController
+class ClientsController < ApplicationController
     
     # skip_before_action :authenticated_user
 

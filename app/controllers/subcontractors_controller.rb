@@ -1,4 +1,4 @@
-class SubcontractorController < ApplicationController
+class SubcontractorsController < ApplicationController
 
     # skip_before_action :authenticated_user
 

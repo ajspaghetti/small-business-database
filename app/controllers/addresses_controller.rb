@@ -1,4 +1,4 @@
-class AddressController < ApplicationController
+class AddressesController < ApplicationController
     
     # skip_before_action :authenticated_user
 

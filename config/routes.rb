@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sessions
 
   get '*path',
       to: 'fallback#index',

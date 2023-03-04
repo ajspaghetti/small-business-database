@@ -4,5 +4,5 @@ class Address < ApplicationRecord
     has_many :employee
     has_many :project
     has_many :subcontractor
-    has_one :zip
+    belongs_to :zip
 end

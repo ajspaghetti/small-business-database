@@ -5,5 +5,5 @@ class AddressSerializer < ActiveModel::Serializer
     object.addresses.uniq.length
   end
 
-  has_one :zip
+  belongs_to :zip
 end
