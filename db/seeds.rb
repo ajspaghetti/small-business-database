@@ -15,7 +15,27 @@ csv.each do |row|
 end
 
 puts "There are now #{Zip.count} rows in the transactions table"
-
+puts "Seeding addresses..."
+    a1 = Address.create!(
+        line_one: "1234 Test Street",
+        line_two: "#1",
+        zip_id: 42741
+    )
+    a2 = Address.create!(
+        line_one: "1234 Test Street",
+        line_two: "#2",
+        zip_id: 42740
+    )
+    a3 = Address.create!(
+        line_one: "1234 Test Street",
+        line_two: "#3",
+        zip_id: 42739
+    )
+    a4 = Address.create!(
+        line_one: "1234 Test Street",
+        line_two: "#4",
+        zip_id: 42738
+    )
 puts "Seeding users..."
     u1 = User.create!(
         username: "admin",
@@ -24,14 +44,6 @@ puts "Seeding users..."
         last_name: "Admin",
         user_phone: "+1 571 319 1994",
         user_email: "alexjspagnoli@outlook.com"
-    )
-puts "Seeding projects..."
-    p1 = Project.create!(
-        project_name: "Example Project 1",
-        project_desc: "Description of project 1",
-        project_notes: "...notes...",
-        address_id: 1,
-        user_id: u1.id
     )
 puts "Seeding client_companies..."
     o1 = ClientCompany.create!(
@@ -100,6 +112,14 @@ puts "Seeding employees..."
         active?: true,
         emp_notes: "...notes..."
     )
+puts "Seeding projects..."
+    p1 = Project.create!(
+        project_name: "Example Project 1",
+        project_desc: "Description of project 1",
+        project_notes: "...notes...",
+        address_id: a1.id,
+        user_id: u1.id
+    )
 puts "Seeding contracts..."
     c1 = Contract.create!(
         contract_title: "Contract One",
@@ -111,26 +131,5 @@ puts "Seeding contracts..."
         employee_id: e1.id,
         subcontractor_id: h1.id,
         user_id: u1.id
-    )
-puts "Seeding addresses..."
-    a1 = Address.create!(
-        line_one: "1234 Test Street",
-        line_two: "#1",
-        zip_id: 42741
-    )
-    a2 = Address.create!(
-        line_one: "1234 Test Street",
-        line_two: "#2",
-        zip_id: 42740
-    )
-    a3 = Address.create!(
-        line_one: "1234 Test Street",
-        line_two: "#3",
-        zip_id: 42739
-    )
-    a4 = Address.create!(
-        line_one: "1234 Test Street",
-        line_two: "#4",
-        zip_id: 42738
     )
 puts "...done seeding!"

@@ -1,4 +1,4 @@
-class ContractController < ApplicationController
+class ContractsController < ApplicationController
     
     # skip_before_action :authenticated_user
 

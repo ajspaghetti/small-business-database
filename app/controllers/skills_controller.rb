@@ -1,4 +1,4 @@
-class SkillController < ApplicationController
+class SkillsController < ApplicationController
     
     # skip_before_action :authenticated_user
 

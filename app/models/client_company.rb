@@ -1,5 +1,5 @@
 class ClientCompany < ApplicationRecord
-    has_one :address
+    belongs_to :address
     has_many :clients
     has_many :contracts
     has_many :projects, through: :contracts

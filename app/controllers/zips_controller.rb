@@ -1,4 +1,4 @@
-class ZipController < ApplicationController
+class ZipsController < ApplicationController
 
     # skip_before_action :authenticated_user
 
@@ -12,7 +12,7 @@ class ZipController < ApplicationController
 
     def show
         zip = Zip.find(params[:id])
-        render json: zip, status: :ok, serializer: ZipAddressesSerializer
+        render json: zip, status: :ok #, serializer: ZipAddressesSerializer
     end
 
     private
