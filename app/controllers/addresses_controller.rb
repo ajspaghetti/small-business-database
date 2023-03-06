@@ -1,9 +1,6 @@
 class AddressesController < ApplicationController
     
-    # skip_before_action :authenticated_user
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    # skip_before_action :authorize
     
     def index
         addresses = Address.all
@@ -29,10 +26,6 @@ class AddressesController < ApplicationController
 
     def address_params
         params_permit(:line_one, :line_two, :zip_id)
-    end
-
-    def not_found
-        render json: { error: "Address not found" }, status: :not_found
     end
 
 end

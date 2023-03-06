@@ -1,17 +1,16 @@
 class SubcontractorsController < ApplicationController
 
-    # skip_before_action :authenticated_user
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    # skip_before_action :authorize
 
     def index
         subcontractors = Subcontractor.all
+        # byebug
         render json: subcontractors, status: :ok
     end
 
     def show
         subcontractor = Subcontractor.find(params[:id])
+        # byebug
         render json: subcontractor, status: :ok
     end
 
@@ -36,9 +35,4 @@ class SubcontractorsController < ApplicationController
     def sub_params
         params_permit(:company_legal_name, :company_dba, :address_id, :primary_poc_name, :poc_role, :poc_phone, :poc_email, :sub_tax_number, :skill_id, :active?, :sub_notes)
     end
-
-    def not_found
-        render json: { error: "Subcontractor not found"}, status: :not_found
-    end
-
 end

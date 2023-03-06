@@ -1,10 +1,7 @@
 class ContractsController < ApplicationController
     
-    # skip_before_action :authenticated_user
+    # skip_before_action :authorize
 
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid
-    
     def index
         contracts = Contract.all
         render json: contracts, status: :ok
@@ -35,10 +32,6 @@ class ContractsController < ApplicationController
 
     def contract_params
         params_permit(:contract_title, :contract_value, :contract_notes, :project_id, :client_company_id, :client_id, :employee_id, :subcontractor_id, :user_id)
-    end
-
-    def not_found
-        render json: { error: "Contract not found"}, status: :not_found
     end
 
 end

@@ -16,37 +16,33 @@ end
 
 puts "There are now #{Zip.count} rows in the transactions table"
 puts "Seeding addresses..."
-    a1 = Address.create!(
+    Address.create!(
         line_one: "1234 Test Street",
         line_two: "#1",
-        zip_id: 42741
+        zip_id: 4700
     )
-    a2 = Address.create!(
+    Address.create!(
         line_one: "1234 Test Street",
         line_two: "#2",
-        zip_id: 42740
+        zip_id: 4701
     )
-    a3 = Address.create!(
+    Address.create!(
         line_one: "1234 Test Street",
         line_two: "#3",
-        zip_id: 42739
+        zip_id: 4702
     )
-    a4 = Address.create!(
+    Address.create!(
         line_one: "1234 Test Street",
         line_two: "#4",
-        zip_id: 42738
+        zip_id: 4703
     )
 puts "Seeding users..."
-    u1 = User.create!(
+    User.create!(
         username: "admin",
-        password: "password",
-        first_name: "Admin",
-        last_name: "Admin",
-        user_phone: "+1 571 319 1994",
-        user_email: "alexjspagnoli@outlook.com"
+        password_digest: "password",
     )
 puts "Seeding client_companies..."
-    o1 = ClientCompany.create!(
+    ClientCompany.create!(
         legal_name: "Company Legal Name",
         dba_name: "Company DBA Name",
         industry: "Technology",
@@ -61,24 +57,28 @@ puts "Seeding client_companies..."
         cc_notes: "...notes..."
     )
 puts "Seeding clients..."
-    k1 = Client.create!(
+    Client.create!(
         first_name: "Steve",
         last_name: "French",
         job_title: "Project Manager",
         client_phone: "+1 571 555 1111",
         client_email: "steve.french@example.com",
-        client_company_id: o1.id,
+        client_company_id: 1,
         client_notes: "...notes..."
     )
 puts "Seeding skills..."
-    s1 = Skill.create!(
+    Skill.create!(
         skill_name: "Ruby on Rails",
+        employee_id: 1,
+        subcontractor_id: nil
     )
-    s2 = Skill.create!(
+    Skill.create!(
         skill_name: "Javascript",
+        employee_id: nil,
+        subcontractor_id: 1
     )
 puts "Seeding subcontractors..."
-    h1 = Subcontractor.create!(
+    Subcontractor.create!(
         company_legal_name: "Subcontractor Legal Name",
         company_dba: "Subcontractor DBA Name",
         address_id: 3,
@@ -87,12 +87,12 @@ puts "Seeding subcontractors..."
         poc_phone: "+1 202 555 1234",
         poc_email: "johnny.english@example.com",
         sub_tax_number: "12-3456789",
-        skill_id: s2.id,
+        skill_id: 2,
         active?: true,
         sub_notes: "...notes..."
     )
 puts "Seeding employees..."
-    e1 = Employee.create!(
+    Employee.create!(
         first_name: "Rudolph",
         middle_name: "Rednose",
         last_name: "Reindeer",
@@ -103,7 +103,7 @@ puts "Seeding employees..."
         address_id: 4,
         tax_number: "111-11-1111",
         job_title: "Engineer",
-        skill_id: s1.id,
+        skill_id: 1,
         start_date: 2.years.ago,
         hourly_or_salary: "Hourly",
         hourly_rate: 45.55,
@@ -113,23 +113,23 @@ puts "Seeding employees..."
         emp_notes: "...notes..."
     )
 puts "Seeding projects..."
-    p1 = Project.create!(
+    Project.create!(
         project_name: "Example Project 1",
         project_desc: "Description of project 1",
         project_notes: "...notes...",
-        address_id: a1.id,
-        user_id: u1.id
+        address_id: 1,
+        user_id: 1
     )
 puts "Seeding contracts..."
-    c1 = Contract.create!(
+    Contract.create!(
         contract_title: "Contract One",
         contract_value: 2500.55,
         contract_notes: "...notes...",
-        project_id: p1.id,
-        client_company_id: o1.id,
-        client_id: k1.id,
-        employee_id: e1.id,
-        subcontractor_id: h1.id,
-        user_id: u1.id
+        project_id: 1,
+        client_company_id: 1,
+        client_id: 1,
+        employee_id: 1,
+        subcontractor_id: 1,
+        user_id: 1
     )
 puts "...done seeding!"

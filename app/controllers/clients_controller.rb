@@ -1,9 +1,6 @@
 class ClientsController < ApplicationController
     
-    # skip_before_action :authenticated_user
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    # skip_before_action :authorize
     
     def index
         clients = Client.all
@@ -36,9 +33,4 @@ class ClientsController < ApplicationController
     def client_params
         params_permit(:first_name, :last_name, :job_title, :client_phone, :client_email, :client_company_id, :client_notes)
     end
-
-    def not_found
-        render json: { error: "Client not found"}, status: :not_found
-    end
-
 end

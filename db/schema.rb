@@ -98,6 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
 
   create_table "skills", force: :cascade do |t|
     t.string "skill_name"
+    t.integer "employee_id"
+    t.integer "subcontractor_id"
   end
 
   create_table "subcontractors", force: :cascade do |t|
@@ -118,11 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "user_phone"
-    t.string "user_email"
+    t.string "password_digest"
   end
 
   create_table "zips", force: :cascade do |t|

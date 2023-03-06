@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../styles/App.css"
 
 function Navbar({
   onLogOut,
@@ -15,76 +16,44 @@ function Navbar({
 
   return (
     <nav className="navbar-container">
-      <Link to="/">
-        <p className="logo-text">urDB</p>
-      </Link>
-      <menu>
-        <ul className="nav-links">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          {!currentUser() && (
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          )}
-          {!currentUser() && (
+          <ul className="nav-links">
             <li>
-              <Link to="/register">Register</Link>
+              <a href="/" to="/" title="Home">urDB</a>
             </li>
-          )}
-          {currentUser() && (
+            <li>          
+              <a className="nav-item"href="/contracts" to="/contracts">Contracts</a>
+            </li>
             <li>
-              <Link to="/hris/employees">Employees</Link>
+              <a className="nav-item"href="/projects" to="/projects">Projects</a>
             </li>
-          )}
-
-          {currentUser() && (
             <li>
-              <Link to="/hris/subcontractors">Subcontractors</Link>
+              <a className="nav-item"href="/client_companies" to="/client_companies">Companies</a>
             </li>
-          )}
-          {currentUser() && (
             <li>
-              <Link to="/hris/skills-matrix">Skills Matrix</Link>
+              <a className="nav-item"href="/clients" to="/clients">Clients</a>
             </li>
-          )}
-          {currentUser() && (
             <li>
-              <Link to="/project-management/contracts">Contracts</Link>
+              <a className="nav-item"href="/employees" to="/employees">Employees</a>
             </li>
-          )}
-          {currentUser() && (
             <li>
-              <Link to="/project-management/projects">Projects</Link>
+              <a className="nav-item"href="subcontractors" to="/subcontractors">Subcontractors</a>
             </li>
-          )}
-          {currentUser() && (
             <li>
-              <Link to="/project-management/companies">Companies</Link>
+              <a className="nav-item"href="skills" to="/skills">Skills Matrix</a>
             </li>
-          )}
-          {currentUser() && (
             <li>
-              <Link to="/project-management/clients">Clients</Link>
+              <a className="nav-item"href="/users/:id" to="/users/:id">Account</a>
             </li>
-          )}
-          {currentUser() && (
+            {/* <li>
+              <a className="nav-item"href="/logout" to="/logout">Log Out</a>
+            </li>
             <li>
-              <Link to="/users/:id">Profile</Link>
+              <a className="nav-item"href="/login" to="/login">Login</a>
             </li>
-          )}
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          { currentUser ? <li className="username">✅ {currentUser.username}</li> : null }
-          {currentUser() && (
             <li>
-              <Link onClick={handleLogOut}>Logout</Link>
-            </li>
-          )}
-        </ul>
-      </menu>
+              <a className="nav-item"href="/register" to ="/register">Register</a>
+            </li> */}
+          </ul>
     </nav>
   );
 }

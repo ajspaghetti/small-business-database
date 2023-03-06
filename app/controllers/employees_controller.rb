@@ -1,17 +1,16 @@
 class EmployeesController < ApplicationController
 
-    # skip_before_action :authenticated_user
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    # skip_before_action :authorize
 
     def index
         employees = Employee.all
+        # byebug
         render json: employees, status: :ok
     end
 
     def show
         employee = Employee.find(params[:id])
+        # byebug
         render json: employee, status: :ok
     end
 
@@ -35,10 +34,6 @@ class EmployeesController < ApplicationController
 
     def employee_params
         params_permit(:first_name, :middle_name, :last_name, :suffix, :gender, :emp_phone, :emp_email, :tax_number, :job_title, :skill_id, :start_date, :hourly_or_salary, :hourly_rate, :annual_salary, :pto_policy, :active?, :emp_notes)
-    end
-
-    def not_found
-        render json: { error: "Employee not found"}, status: :not_found
     end
 
 end

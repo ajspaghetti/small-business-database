@@ -7,7 +7,6 @@ class CreateZips < ActiveRecord::Migration[7.0]
       t.string :city
       t.string :state # acronym
       t.string :county
-      # t.string :address_id
     end
   end
 end

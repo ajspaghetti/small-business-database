@@ -1,10 +1,6 @@
 class ClientCompaniesController < ApplicationController
     
-    # skip_before_action :authenticated_user
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid
-    
+    # skip_before_action :authorize
     
     def index
         companies = ClientCompany.all
@@ -37,9 +33,4 @@ class ClientCompaniesController < ApplicationController
     def company_params
         params_permit(:legal_name, :dba_name, :industry, :co_phone, :co_email, :primary_poc_name, :poc_role, :poc_phone, :poc_email, :annual_revenue, :cc_notes)
     end
-
-    def not_found
-        render json: { error: "Company not found"}, status: :not_found
-    end
-
 end

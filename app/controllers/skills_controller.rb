@@ -1,9 +1,6 @@
 class SkillsController < ApplicationController
     
-    # skip_before_action :authenticated_user
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    # skip_before_action :authorize
 
     def index
         skills = Skill.all
@@ -34,11 +31,6 @@ class SkillsController < ApplicationController
     private
 
     def skill_params
-        params_permit(:skill_name)
+        params_permit(:skill_name, :employee_id, :subcontractor_id)
     end
-
-    def not_found
-        render json: { error: "Skill not found"}, status: :not_found
-    end
-
 end

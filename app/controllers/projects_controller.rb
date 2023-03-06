@@ -1,9 +1,6 @@
 class ProjectsController < ApplicationController
 
-    # skip_before_action :authenticated_user
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid
+    # skip_before_action :authorize
 
     def index
         projects = Project.all
@@ -36,9 +33,4 @@ class ProjectsController < ApplicationController
     def project_params
         params_permit(:project_name, :project_desc, :project_notes, :address_id, :user_id)
     end
-
-    def not_found
-        render json: { error: "Project not found"}, status: :not_found
-    end
-
 end

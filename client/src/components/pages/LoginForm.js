@@ -1,7 +1,10 @@
-import {useState} from 'react';
-import LoginForm from './LoginForm';
+import { useState } from 'react';
 
-function LoginPage({ onLogIn }) {
+
+
+function LoginForm({
+  onLogIn
+}) {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,12 +34,13 @@ function LoginPage({ onLogIn }) {
         };
     });
   }
+    
 
   return (
-      <div>
-        <h1>Login</h1>
-      </div>
+    <div>
+        <h1>LoginForm</h1>
+    </div>
   );
 }
 
-export default LoginPage;
+export default LoginForm
