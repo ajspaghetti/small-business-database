@@ -39,7 +39,7 @@ function Navbar({
               <a className="nav-item"href="subcontractors" to="/subcontractors">Subcontractors</a>
             </li>
             <li>
-              <a className="nav-item"href="skills" to="/skills">Skills Matrix</a>
+              <a className="nav-item"href="skills" to="/skills">Skills</a>
             </li>
             <li>
               <a className="nav-item"href="/users/:id" to="/users/:id">Account</a>

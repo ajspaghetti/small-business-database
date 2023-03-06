@@ -1,4 +1,7 @@
 import React from "react";
+import { useState, useEffect } from 'react'
+import Skill from './Skill'
+import SkillForm from './SkillForm'
 
 function Skills({
     skills
