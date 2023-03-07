@@ -4,9 +4,8 @@ function Address({
     address
 }) {
 
-
     return (
-        <div>
+        <div className="card-spacing">
             <div className="card">
                 <div className="card-details">
                     <ul className="cards-ul">

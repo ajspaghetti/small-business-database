@@ -11,9 +11,6 @@ function Clients() {
         .then(clients => setClients(clients))
     }, [])
 
-
-
-
     return (
         <div>
             <div className="container">

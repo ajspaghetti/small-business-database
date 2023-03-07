@@ -4,6 +4,7 @@ import Login from "./components/pages/Login"
 import Home from "./components/pages/Home"
 import NavBar from "./components/pages/NavBar"
 import User from "./components/User"
+import Users from './components/User'
 import Register from "./components/pages/RegisterForm"
 import Employee from "./components/Employee"
 import Employees from "./components/Employees"
@@ -21,21 +22,25 @@ import Client from "./components/Client"
 import Clients from "./components/Clients"
 import Address from "./components/Address"
 import Addresses from "./components/Addresses"
+import Matrix from './components/pages/Matrix'
+import Hris from './components/pages/Hris'
+import Management from './components/pages/Management'
 import { UserContext } from "./components/pages/UserContext"
+import WelcomeMessage from './components/pages/WelcomeMessage';
 
 
 function App() {
-  const initialUser = {
-    username: "",
-    password: ""
-  }
-  const [currentUser, setCurrentUser] = useState(initialUser)
-  console.log(currentUser)
+
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  
+  const [user, setUser] = useState(null)
+  // console.log(user)
 
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setCurrentUser(user))
+        r.json().then((user) => setUser(user))
       }
     });
   }, []);
@@ -43,13 +48,12 @@ function App() {
 
   // Login & Logout
   const onLogIn = (loggedInUser) => {
-    setCurrentUser(loggedInUser)
+    setUser(loggedInUser)
   };
-
   function onLogOut() {
     fetch(`/logout`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        setCurrentUser(initialUser)
+        setUser(null)
       };
     })
   }
@@ -59,85 +63,106 @@ function App() {
   return (
     <div className="App">
       <NavBar 
-        currentUser={currentUser} 
+        user={user} 
         onLogOut={onLogOut}
       />
       <div>
+      <UserContext.Provider value={{ user }}>
+        <WelcomeMessage />
+      </UserContext.Provider>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Home currentUser={currentUser}/>
+            <Home user={user}/>
           </Route>
 
-          <Route exact path="/employees">
-            <Employees 
-            />
+          <Route exact path="/matrix">
+            <Matrix />
           </Route>
 
-          <Route exact path="/employees/:id">
+          <Route exact path="/hris">
+            <Hris />
+          </Route>
+
+          <Route exact path="/management">
+            <Management />
+          </Route>
+
+
+          <Route exact path="/hris/employees">
+            <Employees />
+          </Route>
+
+          <Route exact path="/hris/employees/:id">
             <Employee />
           </Route>
 
 
-          <Route exact path="/subcontractors">
+          <Route exact path="/hris/subcontractors">
             <Subcontractors />
           </Route>
 
-          <Route exact path="/subcontractors/:id">
+          <Route exact path="/hris/subcontractors/:id">
             <Subcontractor />
           </Route>
 
-          <Route exact path="/skills">
+          <Route exact path="/matrix/skills">
             <Skills />
           </Route>
           
-          <Route exact path="/skills/:id">
+          <Route exact path="/matrix/skills/:id">
             <Skill />
           </Route>
 
-          <Route exact path="/contracts">
+          <Route exact path="/management/contracts">
             <Contracts />
           </Route>
 
-          <Route exact path="/contracts/:id">
+          <Route exact path="/management/contracts/:id">
             <Contract />
           </Route>
 
-          <Route exact path="/projects">
+          <Route exact path="/management/projects">
             <Projects />
           </Route>
                
-          <Route exact path="/projects/:id">
+          <Route exact path="/management/projects/:id">
             <Project />
           </Route>
 
-          <Route exact path="/client_companies">
+          <Route exact path="/management/client_companies">
             <Companies />
           </Route>
 
-          <Route exact path="/client_companies/:id">
+          <Route exact path="/management/client_companies/:id">
             <Company />
           </Route>
 
-          <Route exact path="/clients">
+          <Route exact path="/management/clients">
             <Clients />
           </Route>
 
-          <Route exact path="/clients/:id">
+          <Route exact path="/management/clients/:id">
             <Client />
           </Route>
 
-          <Route exact path="/addresses">
+          <Route exact path="/regional/addresses">
             <Addresses />
           </Route>
 
-          <Route exact path="/addresses/:id">
+          <Route exact path="/regional/addresses/:id">
             <Address />
+          </Route>
+
+          <Route exact path="/users">
+            <Users 
+              user={user}
+            />
           </Route>
 
           <Route exact path="/users/:id">
             <User
-              currentUser={currentUser}
+              user={user}
               onDestroyUser={onLogOut}
             />
           </Route>

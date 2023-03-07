@@ -12,9 +12,6 @@ function Addresses() {
         .then(addresses => setAddresses(addresses))
     }, [])
 
-
-
-
     return (
         <div>
             <div className="container">
