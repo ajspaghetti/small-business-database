@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_044248) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_214159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_044248) do
     t.float "hourly_rate"
     t.float "annual_salary"
     t.string "pto_policy"
-    t.boolean "active"
+    t.boolean "active?"
     t.text "emp_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -112,7 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_044248) do
     t.string "poc_email"
     t.string "sub_tax_number"
     t.integer "skill_id"
-    t.boolean "active"
+    t.boolean "active?"
     t.text "sub_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -120,7 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_044248) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
   end
 
   create_table "zips", force: :cascade do |t|

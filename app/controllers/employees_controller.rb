@@ -33,7 +33,7 @@ class EmployeesController < ApplicationController
     private
 
     def employee_params
-        params_permit(:first_name, :middle_name, :last_name, :suffix, :gender, :emp_phone, :emp_email, :tax_number, :job_title, :skill_id, :start_date, :hourly_or_salary, :hourly_rate, :annual_salary, :pto_policy, :active, :emp_notes)
+        params_permit(:first_name, :middle_name, :last_name, :suffix, :gender, :emp_phone, :emp_email, :tax_number, :job_title, :skill_id, :start_date, :hourly_or_salary, :hourly_rate, :annual_salary, :pto_policy, :active?, :emp_notes)
     end
 
 end

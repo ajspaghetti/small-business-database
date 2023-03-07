@@ -88,7 +88,7 @@ puts "Seeding subcontractors..."
         poc_email: "johnny.english@example.com",
         sub_tax_number: "12-3456789",
         skill_id: 2,
-        active: true,
+        active?: true,
         sub_notes: "...notes..."
     )
 puts "Seeding employees..."
@@ -109,7 +109,7 @@ puts "Seeding employees..."
         hourly_rate: 45.55,
         annual_salary: 0.00,
         pto_policy: "160 Hours/year, 80 Hours rollover (max 300 hours)",
-        active: true,
+        active?: true,
         emp_notes: "...notes..."
     )
 puts "Seeding projects..."

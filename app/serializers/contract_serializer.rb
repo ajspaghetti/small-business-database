@@ -1,5 +1,5 @@
 class ContractSerializer < ActiveModel::Serializer
-  attributes :id, :contract_title, :contract_value, :contract_notes, :project_id, :client_company_id, :client_id, :employee_id, :subcontractor_id, :user_id, :user
+  attributes :id, :contract_title, :contract_value, :contract_notes, :project_id, :client_company_id, :client_id, :employee_id, :subcontractor_id, :user_id, :user, :subcontractor, :employee, :client, :project
 
   belongs_to :project
   belongs_to :client_company

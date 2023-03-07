@@ -5,7 +5,6 @@ function Contract({
     contract
 }) {
 
-
     return (
         <div className="card-spacing">
             <div className="card">
@@ -17,7 +16,7 @@ function Contract({
                             <div>
                                 <h5>{contract.contract_title}</h5>
                                 <p>CV: ${contract.contract_value}</p>
-                                <p>Owner: {contract.user.email}</p>
+                                <p>Owner: {contract.user.username}</p>
                                 <p>Project: {contract.project.project_name}</p>
                                 <p>Company: {contract.client_company.legal_name}</p>
                                 <p>Contact: {contract.client.first_name} {contract.client.last_name}</p>

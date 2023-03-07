@@ -9,7 +9,7 @@ function Project({
     // Mapping has_many contracts serialized
     console.log(project.contracts)
     const data1 = project.contracts
-    const listData1 = data1.map((data1) => <li key={data1.id}>{data1.contract_title} | CV: {data1.contract_value} | Owner: {data1.user.email}</li>)
+    const listData1 = data1.map((data1) => <li key={data1.id}>{data1.contract_title} | CV: {data1.contract_value} | Owner: {data1.user.username}</li>)
 
     // Mapping has_many client_companies serialized
     console.log(project.client_companies)

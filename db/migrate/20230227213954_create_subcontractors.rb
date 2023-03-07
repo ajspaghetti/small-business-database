@@ -10,7 +10,7 @@ class CreateSubcontractors < ActiveRecord::Migration[7.0]
       t.string :poc_email
       t.string :sub_tax_number # ein or itin
       t.integer :skill_id
-      t.boolean :active
+      t.boolean :active?
       t.text :sub_notes
 
       t.timestamps

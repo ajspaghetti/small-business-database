@@ -4,7 +4,7 @@ import Login from "./components/pages/Login"
 import Home from "./components/pages/Home"
 import NavBar from "./components/pages/NavBar"
 import User from "./components/User"
-import Register from "./components/pages/RegisterForm"
+import RegisterForm from "./components/pages/RegisterForm"
 import Employee from "./components/Employee"
 import Employees from "./components/Employees"
 import Subcontractor from "./components/Subcontractor"
@@ -21,16 +21,15 @@ import Client from "./components/Client"
 import Clients from "./components/Clients"
 import Address from "./components/Address"
 import Addresses from "./components/Addresses"
-import { UserContext } from "./components/pages/UserContext"
 import Matrix from './components/pages/Matrix'
 import Hris from './components/pages/Hris'
 import Management from './components/pages/Management'
-import WelcomeMessage from './components/pages/WelcomeMessage';
-// import LoginForm from './components/pages/LoginForm'
+// import { UserContext } from "./components/pages/UserContext"
+// import WelcomeMessage from './components/pages/WelcomeMessage';
 
 
 function App() {
-
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const [displayCard, setDisplayCard] = useState(null);
 
@@ -67,11 +66,11 @@ function App() {
         onLogOut={onLogOut}
       />
       <div>
-      <UserContext.Provider 
+      {/* <UserContext.Provider 
        value={{ currentUser }}
       >
         <WelcomeMessage />
-      </UserContext.Provider>
+      </UserContext.Provider> */}
 
       <BrowserRouter>
         <Switch>
@@ -170,6 +169,13 @@ function App() {
             <Login
               onLogIn={onLogIn}
             />
+          </Route>
+
+          <Route exact path="/register">
+            <RegisterForm
+              onLogIn={onLogIn}
+            />
+
           </Route>
         </Switch>
       </BrowserRouter>

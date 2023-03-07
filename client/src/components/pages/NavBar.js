@@ -7,12 +7,14 @@ function Navbar({
   currentUser,
 }) {
 
-  const handleLogOut = () => {
+  function handleLogOut() {
     fetch('/logout', {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(() => onLogOut())
-  };
+        .then(() => onLogOut())
+  }
+
+  
 
   return (
     <nav className="navbar-container">
@@ -21,38 +23,38 @@ function Navbar({
               <a href="/" to="/" title="Home">urDB</a>
             </li>
             <li>          
-              <a className="nav-item"href="/contracts" to="/contracts">Contracts</a>
+              <a className="nav-item"href="/management/contracts" to="/management/contracts">Contracts</a>
             </li>
             <li>
-              <a className="nav-item"href="/projects" to="/projects">Projects</a>
+              <a className="nav-item"href="/management/projects" to="/management/projects">Projects</a>
             </li>
             <li>
-              <a className="nav-item"href="/client_companies" to="/client_companies">Companies</a>
+              <a className="nav-item"href="/management/client_companies" to="/management/client_companies">Companies</a>
             </li>
             <li>
-              <a className="nav-item"href="/clients" to="/clients">Clients</a>
+              <a className="nav-item"href="/management/clients" to="/management/clients">Clients</a>
             </li>
             <li>
-              <a className="nav-item"href="/employees" to="/employees">Employees</a>
+              <a className="nav-item"href="/hris/employees" to="/hris/employees">Employees</a>
             </li>
             <li>
-              <a className="nav-item"href="subcontractors" to="/subcontractors">Subcontractors</a>
+              <a className="nav-item"href="/hris/subcontractors" to="/hris/subcontractors">Subcontractors</a>
             </li>
             <li>
-              <a className="nav-item"href="skills" to="/skills">Skills Matrix</a>
+              <a className="nav-item"href="/matrix/skills" to="/matrix/skills">Skills</a>
             </li>
             <li>
-              <a className="nav-item"href="/users/:id" to="/users/:id">Account</a>
+              <a className="nav-item"href="/users/" to="/users/">Accounts</a>
             </li>
-            {/* <li>
-              <a className="nav-item"href="/logout" to="/logout">Log Out</a>
+            <li>
+              <a className="nav-item"href="/" to="/logout" onClick={handleLogOut}>Log Out</a>
             </li>
             <li>
               <a className="nav-item"href="/login" to="/login">Login</a>
             </li>
             <li>
               <a className="nav-item"href="/register" to ="/register">Register</a>
-            </li> */}
+            </li>
           </ul>
     </nav>
   );
