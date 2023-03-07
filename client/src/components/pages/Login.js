@@ -1,36 +1,8 @@
 import {useState} from 'react';
 import LoginForm from './LoginForm';
 
-function LoginPage({ onLogIn }) {
+function Login({ onLogIn }) {
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true)
-    const loginuser = {
-      username: username,
-      password: password
-    }
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginuser),
-    })
-      .then((r) => { 
-        setIsLoading(false);
-        if (r.ok) {
-          r.json().then((user) => onLogIn(user));
-        } else {
-          r.json().then((err) => setErrors(err.errors))
-        };
-    });
-  }
 
   return (
       <div>
@@ -39,4 +11,4 @@ function LoginPage({ onLogIn }) {
   );
 }
 
-export default LoginPage;
+export default Login;

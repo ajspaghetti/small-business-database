@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"
 
+
 function Home({
-    currentUser,
+    user,
     onLogin
 }) {
     const [username, setUsername] = useState("");
