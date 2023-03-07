@@ -4,7 +4,7 @@ import "../../styles/App.css"
 
 function Navbar({
   onLogOut,
-  currentUser,
+  user,
 }) {
 
   function handleLogOut() {

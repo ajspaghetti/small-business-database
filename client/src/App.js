@@ -24,6 +24,7 @@ import Addresses from "./components/Addresses"
 import Matrix from './components/pages/Matrix'
 import Hris from './components/pages/Hris'
 import Management from './components/pages/Management'
+
 // import { UserContext } from "./components/pages/UserContext"
 // import WelcomeMessage from './components/pages/WelcomeMessage';
 
@@ -36,7 +37,7 @@ function App() {
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setCurrentUser(user))
+        r.json().then((user) => setUser(user))
       }
     });
   }, []);
@@ -62,10 +63,11 @@ function App() {
   return (
     <div className="App">
       <NavBar 
-        currentUser={currentUser} 
+        user={user} 
         onLogOut={onLogOut}
       />
       <div>
+
       {/* <UserContext.Provider 
        value={{ currentUser }}
       >
@@ -75,11 +77,12 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Home currentUser={currentUser}/>
+            <Home user={user}/>
           </Route>
 
           <Route exact path="/matrix">
             <Matrix />
+
           </Route>
 
           <Route exact path="/hris">
@@ -156,8 +159,15 @@ function App() {
             <Address />
           </Route>
 
+          <Route exact path="/users">
+            <Users 
+              user={user}
+            />
+          </Route>
+
           <Route exact path="/users/:id">
             <User
+
               onShowDetails={onShowDetails}
               displayCard={displayCard}
               currentUser={currentUser}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Address from './Address'
 
+
 function Addresses() {
 
     const [addresses, setAddresses] = useState([])
