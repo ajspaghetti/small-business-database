@@ -39,7 +39,7 @@ puts "Seeding addresses..."
 puts "Seeding users..."
     User.create!(
         username: "admin",
-        password_digest: "password",
+        password: "password",
     )
 puts "Seeding client_companies..."
     ClientCompany.create!(

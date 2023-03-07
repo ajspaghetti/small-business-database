@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-    # skip_before_action :authorize
+    skip_before_action :authenticated_user
 
     def index
         projects = Project.all

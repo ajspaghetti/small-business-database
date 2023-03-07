@@ -1,6 +1,6 @@
 class SubcontractorsController < ApplicationController
 
-    # skip_before_action :authorize
+    skip_before_action :authenticated_user
 
     def index
         subcontractors = Subcontractor.all

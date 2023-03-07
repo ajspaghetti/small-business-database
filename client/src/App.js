@@ -25,35 +25,34 @@ import { UserContext } from "./components/pages/UserContext"
 
 
 function App() {
-  const initialUser = {
-    username: "",
-    password: ""
-  }
-  const [currentUser, setCurrentUser] = useState(initialUser)
-  console.log(currentUser)
+
+  const [currentUser, setCurrentUser] = useState(null);
+  const [displayCard, setDisplayCard] = useState(null);
 
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setCurrentUser(user))
+        r.json().then((user) => setCurrentUser(user));
       }
     });
   }, []);
 
-
-  // Login & Logout
   const onLogIn = (loggedInUser) => {
-    setCurrentUser(loggedInUser)
+    setCurrentUser(loggedInUser);
   };
 
-  function onLogOut() {
-    fetch(`/logout`, { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setCurrentUser(initialUser)
-      };
-    })
-  }
+  const onLogOut = () => {
+    setCurrentUser(null);
+  };
 
+  const onShowDetails = (details) => {
+    setDisplayCard(details);
+  };
+
+  const onDestroyUser = () => {
+    setCurrentUser(null);
+    setDisplayCard(null);
+  };
   
 
   return (
@@ -137,8 +136,10 @@ function App() {
 
           <Route exact path="/users/:id">
             <User
+              onShowDetails={onShowDetails}
+              displayCard={displayCard}
               currentUser={currentUser}
-              onDestroyUser={onLogOut}
+              onDestroyUser={onDestroyUser}
             />
           </Route>
 
@@ -153,7 +154,6 @@ function App() {
               onLogIn={onLogIn}
             />
           </Route>
-          
         </Switch>
       </BrowserRouter>
       </div>
