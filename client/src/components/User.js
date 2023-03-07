@@ -6,7 +6,7 @@ function User({
 
     return (
         <div>
-            <h1>currentUser</h1>
+            <h1>{currentUser}</h1>
         </div>
     )
 }

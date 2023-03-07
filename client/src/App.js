@@ -22,6 +22,11 @@ import Clients from "./components/Clients"
 import Address from "./components/Address"
 import Addresses from "./components/Addresses"
 import { UserContext } from "./components/pages/UserContext"
+import Matrix from './components/pages/Matrix'
+import Hris from './components/pages/Hris'
+import Management from './components/pages/Management'
+import WelcomeMessage from './components/pages/WelcomeMessage';
+// import LoginForm from './components/pages/LoginForm'
 
 
 function App() {
@@ -32,7 +37,7 @@ function App() {
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setCurrentUser(user));
+        r.json().then((user) => setCurrentUser(user))
       }
     });
   }, []);
@@ -62,75 +67,93 @@ function App() {
         onLogOut={onLogOut}
       />
       <div>
+      <UserContext.Provider 
+       value={{ currentUser }}
+      >
+        <WelcomeMessage />
+      </UserContext.Provider>
+
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             <Home currentUser={currentUser}/>
           </Route>
 
-          <Route exact path="/employees">
-            <Employees 
-            />
+          <Route exact path="/matrix">
+            <Matrix />
           </Route>
 
-          <Route exact path="/employees/:id">
+          <Route exact path="/hris">
+            <Hris />
+          </Route>
+
+          <Route exact path="/management">
+            <Management />
+          </Route>
+
+
+          <Route exact path="/hris/employees">
+            <Employees />
+          </Route>
+
+          <Route exact path="/hris/employees/:id">
             <Employee />
           </Route>
 
 
-          <Route exact path="/subcontractors">
+          <Route exact path="/hris/subcontractors">
             <Subcontractors />
           </Route>
 
-          <Route exact path="/subcontractors/:id">
+          <Route exact path="/hris/subcontractors/:id">
             <Subcontractor />
           </Route>
 
-          <Route exact path="/skills">
+          <Route exact path="/matrix/skills">
             <Skills />
           </Route>
           
-          <Route exact path="/skills/:id">
+          <Route exact path="/matrix/skills/:id">
             <Skill />
           </Route>
 
-          <Route exact path="/contracts">
+          <Route exact path="/management/contracts">
             <Contracts />
           </Route>
 
-          <Route exact path="/contracts/:id">
+          <Route exact path="/management/contracts/:id">
             <Contract />
           </Route>
 
-          <Route exact path="/projects">
+          <Route exact path="/management/projects">
             <Projects />
           </Route>
                
-          <Route exact path="/projects/:id">
+          <Route exact path="/management/projects/:id">
             <Project />
           </Route>
 
-          <Route exact path="/client_companies">
+          <Route exact path="/management/client_companies">
             <Companies />
           </Route>
 
-          <Route exact path="/client_companies/:id">
+          <Route exact path="/management/client_companies/:id">
             <Company />
           </Route>
 
-          <Route exact path="/clients">
+          <Route exact path="/management/clients">
             <Clients />
           </Route>
 
-          <Route exact path="/clients/:id">
+          <Route exact path="/management/clients/:id">
             <Client />
           </Route>
 
-          <Route exact path="/addresses">
+          <Route exact path="/regional/addresses">
             <Addresses />
           </Route>
 
-          <Route exact path="/addresses/:id">
+          <Route exact path="/regional/addresses/:id">
             <Address />
           </Route>
 
@@ -145,12 +168,6 @@ function App() {
 
           <Route exact path="/login" >
             <Login
-              onLogIn={onLogIn}
-            />
-          </Route>
-
-          <Route exact path="/register">
-            <Register 
               onLogIn={onLogIn}
             />
           </Route>

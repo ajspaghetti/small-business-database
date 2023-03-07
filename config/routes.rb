@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :subcontractors
   resources :zips, only: [:index, :show]
 
-  resources :users, only: [:index, :show, :create]
+  resources :users
 
   get "/me", to: "users#show"
   post "/register", to: "users#create"

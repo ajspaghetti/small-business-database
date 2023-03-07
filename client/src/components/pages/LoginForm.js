@@ -1,45 +1,38 @@
 import { useState } from 'react';
-
-
-
-function LoginForm({
-  onLogIn
-}) {
-
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true)
-    const loginuser = {
-      username: username,
-      password: password
-    }
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginuser),
-    })
-      .then((r) => { 
-        setIsLoading(false);
-        if (r.ok) {
-          r.json().then((user) => onLogIn(user));
-        } else {
-          r.json().then((err) => setErrors(err.errors))
-        };
-    });
+import axios from 'axios';
+  
+function LoginForm(
+  { 
+    user,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    setUser,
+    loggedIn,
+    handleLogin,
+    handleLogout
   }
-    
+  ) {
+
+
+
+
 
   return (
-    <div>
-        <h1>LoginForm</h1>
-    </div>
+    <form onSubmit={handleLogin}>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email" />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password" />
+      <button type="submit">Log In</button>
+    </form>
   );
 }
 

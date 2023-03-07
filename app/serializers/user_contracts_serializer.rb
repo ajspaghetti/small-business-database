@@ -1,5 +1,5 @@
 class UserContractsSerializer < ActiveModel::Serializer
-  attributes :id, :username
+  attributes :id, :email
 
   has_many :contracts
 end

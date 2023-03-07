@@ -1,7 +1,17 @@
 import {useState} from 'react';
 import LoginForm from './LoginForm';
 
-function LoginPage({ onLogIn }) {
+function Login({ 
+  user,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  setUser,
+  loggedIn,
+  handleLogin,
+  handleLogout
+ }) {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,9 +43,26 @@ function LoginPage({ onLogIn }) {
   }
 
   return (
+    <div>
+    {loggedIn ? (
       <div>
-        <h1>Login</h1>
+        <p>You are logged in!</p>
+        <button onClick={handleLogout}>Log out</button>
       </div>
+    ) : (
+      <LoginForm 
+        user={user}
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        setUser={setUser}
+        loggedIn={loggedIn}
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+      />
+    )}
+  </div>
   );
 }
 

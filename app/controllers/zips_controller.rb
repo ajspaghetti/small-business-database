@@ -1,6 +1,6 @@
 class ZipsController < ApplicationController
 
-    # skip_before_action :authenticated_user
+    skip_before_action :authenticated_user
 
     def index
         zips = Zip.all

@@ -12,6 +12,10 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+# Use devise for authentication [https://github.com/heartcombo/devise]
+gem "devise", "~> 4.9.0"
+gem "warden", "~> 1.2.9"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
