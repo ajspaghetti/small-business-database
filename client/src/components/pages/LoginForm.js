@@ -1,17 +1,19 @@
 import { useState } from 'react';
+  
+function LoginForm(
+  { 
+    currentUser,
+    username,
+    setUsername,
+    password,
+    setPassword,
+    setIsLoading,
+    onLogIn,
+    setErrors,
+  }
+  ) {
 
-
-
-function LoginForm({
-  onLogIn
-}) {
-
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  function handleSubmit(e) {
+    function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true)
     const loginuser = {
@@ -34,12 +36,24 @@ function LoginForm({
         };
     });
   }
-    
+
+  console.log(currentUser)
+
 
   return (
-    <div>
-        <h1>LoginForm</h1>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Username" />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password" />
+      <button type="submit">Log In</button>
+    </form>
   );
 }
 

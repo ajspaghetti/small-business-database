@@ -1,6 +1,4 @@
-// Matrix 
 import React from 'react'
-// import { useState, useEffect } from "react"
 import Skills from '../Skills'
 import Employees from '../Employees'
 import Subcontractors from '../Subcontractors'
@@ -10,8 +8,6 @@ function Matrix({
     searchTerm,
     setSearchTerm
 }) {
-
-
 
     return (
         <div>

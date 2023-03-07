@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # resources :sessions
+  resources :sessions
   resources :addresses
   resources :clients
   resources :client_companies
@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   resources :subcontractors
   resources :zips, only: [:index, :show]
 
-  resources :users, only: [:index, :show, :create]
+  resources :users
 
   get "/me", to: "users#show"
-  # post "/signup", to: "users#create"
-  # post "/login", to: "sessions#create"
-  # delete "/logout", to: "sessions#destroy"
+  post "/register", to: "users#create"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
   get '*path',
     to: 'fallback#index',

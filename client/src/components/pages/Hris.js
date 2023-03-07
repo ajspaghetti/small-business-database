@@ -1,6 +1,4 @@
-// HRIS
 import React from 'react'
-// import { useState, useEffect } from "react"
 import Employees from '../Employees'
 import Subcontractors from '../Subcontractors'
 import SearchSortFilter from './SearchSortFilter'

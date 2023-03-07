@@ -4,8 +4,7 @@ import Login from "./components/pages/Login"
 import Home from "./components/pages/Home"
 import NavBar from "./components/pages/NavBar"
 import User from "./components/User"
-import Users from './components/User'
-import Register from "./components/pages/RegisterForm"
+import RegisterForm from "./components/pages/RegisterForm"
 import Employee from "./components/Employee"
 import Employees from "./components/Employees"
 import Subcontractor from "./components/Subcontractor"
@@ -25,17 +24,15 @@ import Addresses from "./components/Addresses"
 import Matrix from './components/pages/Matrix'
 import Hris from './components/pages/Hris'
 import Management from './components/pages/Management'
-import { UserContext } from "./components/pages/UserContext"
-import WelcomeMessage from './components/pages/WelcomeMessage';
+
+// import { UserContext } from "./components/pages/UserContext"
+// import WelcomeMessage from './components/pages/WelcomeMessage';
 
 
 function App() {
-
   const [searchTerm, setSearchTerm] = useState("");
-  
-  
-  const [user, setUser] = useState(null)
-  // console.log(user)
+  const [currentUser, setCurrentUser] = useState(null);
+  const [displayCard, setDisplayCard] = useState(null);
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -45,19 +42,22 @@ function App() {
     });
   }, []);
 
-
-  // Login & Logout
   const onLogIn = (loggedInUser) => {
-    setUser(loggedInUser)
+    setCurrentUser(loggedInUser);
   };
-  function onLogOut() {
-    fetch(`/logout`, { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null)
-      };
-    })
-  }
 
+  const onLogOut = () => {
+    setCurrentUser(null);
+  };
+
+  const onShowDetails = (details) => {
+    setDisplayCard(details);
+  };
+
+  const onDestroyUser = () => {
+    setCurrentUser(null);
+    setDisplayCard(null);
+  };
   
 
   return (
@@ -67,9 +67,13 @@ function App() {
         onLogOut={onLogOut}
       />
       <div>
-      <UserContext.Provider value={{ user }}>
+
+      {/* <UserContext.Provider 
+       value={{ currentUser }}
+      >
         <WelcomeMessage />
-      </UserContext.Provider>
+      </UserContext.Provider> */}
+
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
@@ -78,6 +82,7 @@ function App() {
 
           <Route exact path="/matrix">
             <Matrix />
+
           </Route>
 
           <Route exact path="/hris">
@@ -162,8 +167,11 @@ function App() {
 
           <Route exact path="/users/:id">
             <User
-              user={user}
-              onDestroyUser={onLogOut}
+
+              onShowDetails={onShowDetails}
+              displayCard={displayCard}
+              currentUser={currentUser}
+              onDestroyUser={onDestroyUser}
             />
           </Route>
 
@@ -174,11 +182,11 @@ function App() {
           </Route>
 
           <Route exact path="/register">
-            <Register 
+            <RegisterForm
               onLogIn={onLogIn}
             />
+
           </Route>
-          
         </Switch>
       </BrowserRouter>
       </div>

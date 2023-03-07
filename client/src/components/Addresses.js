@@ -1,6 +1,6 @@
-import React from "react";
-import { useState, useEffect } from 'react'
-import Address from './Address.js'
+import React, { useState, useEffect } from "react";
+import Address from './Address'
+
 
 function Addresses() {
 

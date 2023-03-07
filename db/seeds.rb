@@ -39,7 +39,7 @@ puts "Seeding addresses..."
 puts "Seeding users..."
     User.create!(
         username: "admin",
-        password_digest: "password",
+        password: "password"
     )
 puts "Seeding client_companies..."
     ClientCompany.create!(
@@ -70,11 +70,11 @@ puts "Seeding skills..."
     Skill.create!(
         skill_name: "Ruby on Rails",
         employee_id: 1,
-        subcontractor_id: nil
+        subcontractor_id: 1
     )
     Skill.create!(
         skill_name: "Javascript",
-        employee_id: nil,
+        employee_id: 1,
         subcontractor_id: 1
     )
 puts "Seeding subcontractors..."

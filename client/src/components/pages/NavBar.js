@@ -7,12 +7,14 @@ function Navbar({
   user,
 }) {
 
-  const handleLogOut = () => {
+  function handleLogOut() {
     fetch('/logout', {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(() => onLogOut())
-  };
+        .then(() => onLogOut())
+  }
+
+  
 
   return (
     <nav className="navbar-container">
@@ -44,15 +46,15 @@ function Navbar({
             <li>
               <a className="nav-item"href="/users/" to="/users/">Accounts</a>
             </li>
-            {/* <li>
-              <a className="nav-item"href="/logout" to="/logout">Log Out</a>
+            <li>
+              <a className="nav-item"href="/" to="/logout" onClick={handleLogOut}>Log Out</a>
             </li>
             <li>
               <a className="nav-item"href="/login" to="/login">Login</a>
             </li>
             <li>
               <a className="nav-item"href="/register" to ="/register">Register</a>
-            </li> */}
+            </li>
           </ul>
     </nav>
   );

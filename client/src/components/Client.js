@@ -13,7 +13,7 @@ function Client({
                         <li className="card-li">
                             <div>
                             <h4>{client.first_name} {client.last_name}</h4>
-                            <Link to={`/clients/${client.id}`}></Link>
+                            {/* <Link to={`/clients/${client.id}`}></Link> */}
                             <div>
                                 <p>Role: {client.job_title}</p>
                                 <p>Phone:<br/>{client.client_phone}</p>

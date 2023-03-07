@@ -4,8 +4,6 @@ import Contracts from '../Contracts'
 import Projects from '../Projects'
 import Companies from '../Companies'
 import Clients from '../Clients'
-import Employees from '../Employees'
-import Subcontractors from '../Subcontractors'
 import SearchSortFilter from './SearchSortFilter'
 
 function Management({

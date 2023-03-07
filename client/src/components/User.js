@@ -21,7 +21,7 @@ function User({
                             <h4>User</h4>
                             {/* <Link to={`/users/${user.id}`}></Link> */}
                             <div>
-                                <p>{user.username}</p>
+                                <p>{currentUser.username}</p>
                                 <br/>
                                 {/* <div>Projects:<ul>{listProjects}</ul></div> */}
                                 {/* <div>Contracts:<br/><ul>{listContracts}</ul></div> */}
