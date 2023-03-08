@@ -1,16 +1,13 @@
-import React from "react";
+import React from "react"
 import { useState, useEffect } from 'react'
 import Skill from './Skill'
 import SkillForm from './SkillForm'
 
-function Skills() {
-    const [skills, setSkills] = useState([])
-
-    useEffect(() => {
-        fetch('/skills')
-        .then(r => r.json())
-        .then(skills => setSkills(skills))
-    }, [])
+function Skills({
+    skills,
+    setSkills
+}) {
+    
 
     return (
         <div>

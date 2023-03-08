@@ -1,17 +1,13 @@
-import React from "react";
+import React from "react"
 import { useState, useEffect } from 'react'
 import Contract from "./Contract"
 import ContractForm from "./ContractForm"
 
 
-function Contracts() {
-    const [contracts, setContracts] = useState([])
-
-    useEffect(() => {
-        fetch('/contracts')
-        .then(r => r.json())
-        .then(contracts => setContracts(contracts))
-    }, [])
+function Contracts({
+    contracts,
+    setContracts
+}) {
 
     return (
         <div>

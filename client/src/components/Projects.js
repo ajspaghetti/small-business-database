@@ -1,17 +1,11 @@
-import React from "react";
-import { useState, useEffect } from 'react'
+import React from "react"
 import Project from './Project'
 import ProjectForm from './ProjectForm'
 
-function Projects() {
-    const [projects, setProjects] = useState([])
-
-    useEffect(() => {
-        fetch('/projects')
-        .then(r => r.json())
-        .then(projects => setProjects(projects))
-    }, [])
-
+function Projects({
+    projects,
+    setProjects
+}) {
 
     return (
         <div>

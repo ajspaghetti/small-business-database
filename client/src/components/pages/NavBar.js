@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 import "../../styles/App.css"
 
 function Navbar({
@@ -57,6 +57,6 @@ function Navbar({
             </li>
           </ul>
     </nav>
-  );
+  )
 }
-  export default Navbar;
+  export default Navbar
