@@ -20,7 +20,7 @@ function Company({
                                 <p>Annual Revenue: <br/>${company.annual_revenue}</p>
                                 <p>Notes: <br/>{company.cc_notes}</p>
                             </div>
-                            <div>
+                            <div className="card-buttons">
                                 <button>Edit</button>
                                 <button>Send an Email</button>
                             </div>

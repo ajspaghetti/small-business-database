@@ -15,6 +15,7 @@ function Employees() {
     return (
         <div>
             <div className="container">
+                
                 <h1>Employees</h1>
                 <br/>
                 <div className="card-container">
@@ -26,6 +27,10 @@ function Employees() {
                                     employee={employee}
                                 />) : null }
                     </div>
+                </div>
+                <br />
+                <div>
+                    <EmployeeForm />
                 </div>
             </div>
         </div>

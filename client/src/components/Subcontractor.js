@@ -37,7 +37,7 @@ function Subcontractor({
                                 
                                 
                             </div>
-                            <div>
+                            <div className="card-buttons">
                                 <button>Edit</button>
                                 <button>Expand/Collapse</button>
                             </div>

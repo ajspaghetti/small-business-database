@@ -28,7 +28,7 @@ function Contract({
                                 <p>{contract.employee.first_name} {contract.employee.middle_name} {contract.employee.last_name} {contract.employee.suffix} | {contract.employee.emp_phone}</p>
                                 <p>{contract.subcontractor.company_dba}, {contract.subcontractor.primary_poc_name} | {contract.subcontractor.poc_phone}</p>
                             </div>
-                            <div>
+                            <div className="card-buttons">
                                 <button>Edit</button>
                                 <button>Send an Email</button>
                             </div>

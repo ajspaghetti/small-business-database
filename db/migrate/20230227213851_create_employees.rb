@@ -17,7 +17,7 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.float :hourly_rate
       t.float :annual_salary
       t.string :pto_policy
-      t.boolean :active?
+      t.boolean :active
       t.text :emp_notes
       
       t.timestamps

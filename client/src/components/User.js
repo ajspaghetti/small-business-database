@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 
 function User({
-    user
+    currentUser
 }) {
 
     // const data = user.contracts
@@ -26,7 +26,7 @@ function User({
                                 {/* <div>Projects:<ul>{listProjects}</ul></div> */}
                                 {/* <div>Contracts:<br/><ul>{listContracts}</ul></div> */}
                             </div>
-                            <div>
+                            <div className="card-buttons">
                                 <button>Edit</button>
                                 <button>Send an Email</button>
                             </div>

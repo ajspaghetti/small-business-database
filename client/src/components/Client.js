@@ -21,7 +21,7 @@ function Client({
                                 <p>Company:<br/>{client.client_company.legal_name}</p>
                                 <p>Notes:<br/>{client.client_notes}</p>
                             </div>
-                            <div>
+                            <div className="card-buttons">
                                 <button>Edit</button>
                                 <button>Send an Email</button>
                             </div>

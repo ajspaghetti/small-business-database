@@ -2,21 +2,21 @@
 @import "~slick-carousel/slick/slick-theme.css";
 
 .App {
-  width: 40%;
+  width: 100%;
   margin: 10 rem auto;
-  /* height: 570px; */
+  height: 570px;
 }
 
-/* .App-logo {
+.App-logo {
   height: 40vmin;
   pointer-events: none;
-}  */
+} 
 
-/* @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-} */
+}
 
 .App-header {
   background-color: #282c34;
@@ -33,21 +33,53 @@
   color: #61dafb;
 }
 
-/* @keyframes App-logo-spin {
+@keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+/* .homepage {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 } */
 
-.homepage {
-  padding-left: 100%;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.form input {
+  outline: solid;
+  border: black;
+  padding: 16px;
+  background-color: grey;
+  border-radius: 15px;
+  border: 1px black;
+  box-shadow: 3px 3px 6px #acd7eb;
+  margin-bottom: 15%;
+}
+
+.home-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding-top: 5rem;
 }
 
 .search {
-  padding-left: 100%;
+  padding-left: 25%;
+  padding-right: 25%
 }
 
 .search-and-filter-container{
@@ -90,38 +122,59 @@
 .navbar-container{
   background: white;
   display: flex;
-  justify-content: space-between;
-  align-items: left;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding-top: 2%;
+  padding-right:3%;
+  padding-left:3%;
+  padding-bottom: 2%;
+  background-color: lightgray;
   /* top: 0; */
   /* z-index: 110; */
 }
 
 .nav-links{
   display: flex;
-  margin-right: 5rem;
+  /* margin-right: 5rem; */
 }
 .nav-links li{
   margin-left: 10px;
   list-style: none;
+  /* outline: solid; */
+  border: black;
+  padding: 8px;
+  background-color: rgb(48, 48, 118);
+  border-radius: 8px;
+  color: white;
+  /* border: 1px black; */
+  box-shadow: 3px 3px 6px grey;
 }
 .nav-links a{
   font-size: 1.25rem;
   font-weight: 300;
-  color: black;
+  color: white;
   text-decoration: none;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
+  /* margin-left: 1rem; */
+
 }
 
 
-/* .card-container {
+.card-container {
+  width: 96%;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-content: left;
-} */
+  flex-wrap: wrap;
+  justify-content: left;
+
+}
 
 .card-spacing {
-  padding-left: 25px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .card-details {
@@ -139,8 +192,6 @@ div.cards {
   flex-direction: row;
   justify-content: space-evenly;
   align-content: left;
-  padding-left: 25px;
-  padding-right: 25px
 }
 
 .cards-ul {
@@ -159,5 +210,59 @@ div.cards {
 }
 
 .container {
-  padding-left: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  align-items: center;
+  align-content: center;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 5%;
+
+}
+button {
+  margin-left: 10px;
+  list-style: none;
+  /* outline: solid; */
+  border: black;
+  padding: 8px;
+  background-color: rgb(48, 48, 118);
+  border-radius: 8px;
+  color: white;
+  /* border: 1px black; */
+  box-shadow: 3px 3px 6px grey;
+  width: 8rem;
+}
+
+.logo-container {
+  max-width: 40%;
+  height:auto;
+  /* padding-top: 2.5%; */
+  /* padding-bottom: 2.5%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-right:-18%;
+}
+.logo {
+  max-width:40%;
+  height:auto;
+  border-radius: 40%;
+}
+
+.login-home {
+  padding-top: 2.5%;
+}
+
+.home-welcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content:center;
 }

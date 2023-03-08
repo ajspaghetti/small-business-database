@@ -37,7 +37,7 @@ function App() {
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user))
+        r.json().then((user) => setCurrentUser(user))
       }
     });
   }, []);
@@ -63,7 +63,7 @@ function App() {
   return (
     <div className="App">
       <NavBar 
-        user={user} 
+        user={currentUser} 
         onLogOut={onLogOut}
       />
       <div>
@@ -77,7 +77,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Home user={user}/>
+            <Home user={currentUser}/>
           </Route>
 
           <Route exact path="/matrix">
@@ -157,12 +157,6 @@ function App() {
 
           <Route exact path="/regional/addresses/:id">
             <Address />
-          </Route>
-
-          <Route exact path="/users">
-            <Users 
-              user={user}
-            />
           </Route>
 
           <Route exact path="/users/:id">

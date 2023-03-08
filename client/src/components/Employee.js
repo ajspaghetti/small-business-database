@@ -18,7 +18,7 @@ function Employee({
                             <div>
                             <Link to={`/employees/${employee.id}`}></Link>
                             <div>
-                                <h5>{employee.first_name} {employee.middle_name} {employee.last_name} {employee.suffix}</h5>
+                                <h3>{employee.first_name} {employee.middle_name} {employee.last_name} {employee.suffix}</h3>
                                 <p>Role: {employee.job_title}</p>
                                 <p>Contact: <br/>{employee.emp_phone}<br/>{employee.emp_email}</p>
                                 <p>Address: <br/>{employee.address.line_one}, {employee.address.line_two}</p>
@@ -32,10 +32,8 @@ function Employee({
                                 <div>Skills: <br/><ul>{listSkills}</ul></div>
                                 <p>Notes: <br/>{employee.emp_notes}</p>
                                 <br/>
-                                
-                                
                             </div>
-                            <div>
+                            <div className="card-buttons">
                                 <button>Edit</button>
                                 <button>Expand/Collapse</button>
                             </div>

@@ -59,7 +59,7 @@ function Project({
                                 <div>Employees: <ul>{listData4}</ul></div>
                                 <div>Subcontractors: <ul>{listData5}</ul></div>
                             </div>
-                            <div>
+                            <div className="card-buttons">
                                 <button>Edit</button>
                                 <button>Expand/Collapse</button>
                             </div>

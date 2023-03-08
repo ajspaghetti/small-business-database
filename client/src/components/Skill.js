@@ -18,7 +18,7 @@ function Skill({
                         <li className="card-li">
                             <div>
                             <p to={`/skills/${skill.id}`}></p>
-                            <div>
+                            <div className="card-buttons">
                                 <h4>{skill.skill_name}</h4><br/>
                                 <div>Employees: <br/><ul>{listEmployees}</ul></div><br/>
                                 <div>Subcontractors: <br/><ul>{listSubs}</ul></div><br/>

@@ -1,5 +1,7 @@
 import React from "react";
-import LoginForm from './LoginForm'
+import LoginForm from './LoginForm';
+import logoNoBackground from "../../assets/logo-white.png"
+import { CenterFocusStrong } from "@mui/icons-material";
 
 
 function Home({
@@ -9,12 +11,19 @@ function Home({
     console.log(currentUser)
 
     return(
+
         <div className='homepage'>
-            <h1>urDB, {currentUser}</h1>
-            <LoginForm />
-            <br/>
-            {/* <div>{currentUser}<div/> */}
+            <div className='home-text'>
+                <div className="logo-container"><img className="logo" src={logoNoBackground} alt="logo"></img></div>
+                <div className="login-home">
+                <h3>{currentUser ? `Welcome, ${currentUser.username}` : ""}</h3>
+                    <LoginForm />
+                    <br/>
+                    {/* <div>{currentUser}<div/> */}
+                </div>
+            </div>
         </div>
+
     )
 }
 
