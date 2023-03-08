@@ -1,15 +1,12 @@
-import React from "react";
-import { useState, useEffect } from 'react'
+import React from "react"
 import Client from "./Client"
+import ClientForm from './ClientForm'
 
-function Clients() {
-    const [clients, setClients] = useState([])
-
-    useEffect(() => {
-        fetch('/clients')
-        .then(r => r.json())
-        .then(clients => setClients(clients))
-    }, [])
+function Clients({
+    clients,
+    setClients
+}) {
+    
 
     return (
         <div>

@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import LoginForm from './LoginForm';
+import {useState} from 'react'
+import LoginForm from './LoginForm'
 
 function Login({ 
   currentUser,
@@ -7,10 +7,10 @@ function Login({
   onLogOut
  }) {
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   return (
     <div>
@@ -36,7 +36,7 @@ function Login({
       </div>
     )}
   </div>
-  );
+  )
 }
 
-export default Login;
+export default Login

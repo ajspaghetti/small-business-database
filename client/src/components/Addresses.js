@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react"
 import Address from './Address'
+import AddressForm from './AddressForm'
 
 
-function Addresses() {
-
-    const [addresses, setAddresses] = useState([])
-
-    useEffect(() => {
-        fetch('/addresses')
-        .then(r => r.json())
-        .then(addresses => setAddresses(addresses))
-    }, [])
+function Addresses({
+    addresses,
+    setAddresses
+}) {
 
     return (
         <div>

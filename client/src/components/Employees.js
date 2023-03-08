@@ -1,16 +1,12 @@
-import React from "react";
+import React from "react"
 import { useState, useEffect } from 'react'
 import Employee from './Employee'
 import EmployeeForm from './EmployeeForm'
 
-function Employees() {
-    const [employees, setEmployees] = useState([])
-
-    useEffect(() => {
-        fetch('/employees')
-        .then(r => r.json())
-        .then(employees => setEmployees(employees))
-    }, [])
+function Employees({
+    employees,
+    setEmployees
+}) {
 
     return (
         <div>
@@ -30,7 +26,10 @@ function Employees() {
                 </div>
                 <br />
                 <div>
-                    <EmployeeForm />
+                    <EmployeeForm 
+                        employees={employees}
+                        setEmployees={setEmployees}
+                    />
                 </div>
             </div>
         </div>

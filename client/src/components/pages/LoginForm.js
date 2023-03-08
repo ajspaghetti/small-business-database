@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
   
 function LoginForm(
   { 
@@ -14,7 +14,7 @@ function LoginForm(
   ) {
 
     function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     setIsLoading(true)
     const loginuser = {
       username: username,
@@ -28,13 +28,13 @@ function LoginForm(
       body: JSON.stringify(loginuser),
     })
       .then((r) => { 
-        setIsLoading(false);
+        setIsLoading(false)
         if (r.ok) {
-          r.json().then((user) => onLogIn(user));
+          r.json().then((user) => onLogIn(user))
         } else {
           r.json().then((err) => setErrors(err.errors))
-        };
-    });
+        }
+    })
   }
 
   console.log(currentUser)
@@ -54,7 +54,7 @@ function LoginForm(
         placeholder="Password" />
       <button type="submit">Log In</button>
     </form>
-  );
+  )
 }
 
 export default LoginForm

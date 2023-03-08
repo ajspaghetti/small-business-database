@@ -24,41 +24,122 @@ import Addresses from "./components/Addresses"
 import Matrix from './components/pages/Matrix'
 import Hris from './components/pages/Hris'
 import Management from './components/pages/Management'
-
 // import { UserContext } from "./components/pages/UserContext"
-// import WelcomeMessage from './components/pages/WelcomeMessage';
+// import WelcomeMessage from './components/pages/WelcomeMessage'
 
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
-  const [displayCard, setDisplayCard] = useState(null);
 
-  useEffect(() => {
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setCurrentUser(user))
-      }
-    });
-  }, []);
-
-  const onLogIn = (loggedInUser) => {
-    setCurrentUser(loggedInUser);
-  };
-
-  const onLogOut = () => {
-    setCurrentUser(null);
-  };
-
-  const onShowDetails = (details) => {
-    setDisplayCard(details);
-  };
-
-  const onDestroyUser = () => {
-    setCurrentUser(null);
-    setDisplayCard(null);
-  };
+  // Search functionality
+    const [searchTerm, setSearchTerm] = useState("")
+  //
   
+  // User LogIn/LogOut
+    const [currentUser, setCurrentUser] = useState(null)
+    const [displayCard, setDisplayCard] = useState(null)
+    useEffect(() => {
+      fetch("/me").then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setCurrentUser(user))
+        }
+      })
+    }, [])
+    const onLogIn = (loggedInUser) => {
+      setCurrentUser(loggedInUser)
+    }
+    const onLogOut = () => {
+      setCurrentUser(null)
+    }
+    const onShowDetails = (details) => {
+      setDisplayCard(details)
+    }
+    const onDestroyUser = () => {
+      setCurrentUser(null)
+      setDisplayCard(null)
+    }
+  //
+
+  // Addresses
+    const [addresses, setAddresses] = useState([])
+      useEffect(() => {
+          fetch('/addresses')
+          .then(r => r.json())
+          .then(addresses => setAddresses(addresses))
+      }, [])
+  //
+
+  // Skills
+    const [skills, setSkills] = useState([])
+      useEffect(() => {
+          fetch('/skills')
+          .then(r => r.json())
+          .then(skills => setSkills(skills))
+      }, [])
+  //
+
+  // Clients
+    const [clients, setClients] = useState([])
+    useEffect(() => {
+        fetch('/clients')
+        .then(r => r.json())
+        .then(clients => setClients(clients))
+    }, [])
+  //
+
+  // Companies
+    const [client_companies, setClientCompanies] = useState([])
+    useEffect(() => {
+        fetch('/client_companies')
+        .then(r => r.json())
+        .then(client_companies => setClientCompanies(client_companies))
+    }, [])
+  //
+  
+  // Contracts
+    const [contracts, setContracts] = useState([])
+      useEffect(() => {
+          fetch('/contracts')
+          .then(r => r.json())
+          .then(contracts => setContracts(contracts))
+      }, [])
+  //
+
+  // Employees
+    const [employees, setEmployees] = useState([])
+    useEffect(() => {
+        fetch('/employees')
+        .then(r => r.json())
+        .then(employees => setEmployees(employees))
+    }, [])
+  //
+
+  // Projects
+    const [projects, setProjects] = useState([])
+    useEffect(() => {
+        fetch('/projects')
+        .then(r => r.json())
+        .then(projects => setProjects(projects))
+    }, [])
+  //
+
+  // Subcontractors
+    const [subcontractors, setSubcontractors] = useState([])
+    useEffect(() => {
+        fetch('/subcontractors')
+        .then(r => r.json())
+        .then(subcontractors => setSubcontractors(subcontractors))
+    }, [])
+  //
+
+  // Zips
+    const [zips, setZips] = useState([])
+    useEffect(() => {
+        fetch('/zips')
+        .then(r => r.json())
+        .then(zips => setZips(zips))
+    }, [])
+  //
+
 
   return (
     <div className="App">
@@ -95,7 +176,10 @@ function App() {
 
 
           <Route exact path="/hris/employees">
-            <Employees />
+            <Employees 
+              employees={employees}
+              setEmployees={setEmployees}
+            />
           </Route>
 
           <Route exact path="/hris/employees/:id">
@@ -104,7 +188,10 @@ function App() {
 
 
           <Route exact path="/hris/subcontractors">
-            <Subcontractors />
+            <Subcontractors 
+              subcontractors={subcontractors}
+              setSubcontractors={setSubcontractors}
+            />
           </Route>
 
           <Route exact path="/hris/subcontractors/:id">
@@ -112,7 +199,10 @@ function App() {
           </Route>
 
           <Route exact path="/matrix/skills">
-            <Skills />
+            <Skills 
+              skills={skills}
+              setSkills={setSkills}
+            />
           </Route>
           
           <Route exact path="/matrix/skills/:id">
@@ -120,7 +210,10 @@ function App() {
           </Route>
 
           <Route exact path="/management/contracts">
-            <Contracts />
+            <Contracts 
+              contracts={contracts}
+              setContracts={setContracts}
+            />
           </Route>
 
           <Route exact path="/management/contracts/:id">
@@ -128,7 +221,10 @@ function App() {
           </Route>
 
           <Route exact path="/management/projects">
-            <Projects />
+            <Projects 
+              projects={projects}
+              setProjects={setProjects}
+            />
           </Route>
                
           <Route exact path="/management/projects/:id">
@@ -136,7 +232,10 @@ function App() {
           </Route>
 
           <Route exact path="/management/client_companies">
-            <Companies />
+            <Companies 
+              companies={client_companies}
+              setCompanies={setClientCompanies}
+            />
           </Route>
 
           <Route exact path="/management/client_companies/:id">
@@ -144,7 +243,10 @@ function App() {
           </Route>
 
           <Route exact path="/management/clients">
-            <Clients />
+            <Clients 
+              clients={clients}
+              setClients={setClients}
+            />
           </Route>
 
           <Route exact path="/management/clients/:id">
@@ -152,7 +254,10 @@ function App() {
           </Route>
 
           <Route exact path="/regional/addresses">
-            <Addresses />
+            <Addresses 
+              addresses={addresses}
+              setAddresses={setAddresses}
+            />
           </Route>
 
           <Route exact path="/regional/addresses/:id">
@@ -185,7 +290,7 @@ function App() {
       </BrowserRouter>
       </div>
     </div>
-  );
+  )
 }
 
 export default App;

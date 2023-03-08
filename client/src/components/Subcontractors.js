@@ -1,16 +1,11 @@
-import React from "react";
-import { useState, useEffect } from 'react'
-import Subcontractor from "./Subcontractor";
-import SubForm from "./SubForm";
+import React from "react"
+import Subcontractor from "./Subcontractor"
+import SubForm from "./SubForm"
 
-function Subcontractors() {
-    const [subcontractors, setSubcontractors] = useState([])
-
-    useEffect(() => {
-        fetch('/subcontractors')
-        .then(r => r.json())
-        .then(subcontractors => setSubcontractors(subcontractors))
-    }, [])
+function Subcontractors({
+    subcontractors,
+    setSubcontractors
+}) {
 
     return (
         <div>

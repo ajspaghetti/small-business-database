@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import { Link, useHistory } from 'react-router-dom'
 
 
 function RegisterForm({ onLogIn }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const history = useHistory()
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     const registerForm = {
       username: username,
       password: password
     }
-    setErrors([]);
-    setIsLoading(true);
+    setErrors([])
+    setIsLoading(true)
     //console.log(registerForm)
     fetch('/register', {
         method: 'POST',
@@ -26,13 +26,13 @@ function RegisterForm({ onLogIn }) {
         body: JSON.stringify(registerForm),
     })
     .then(r => {
-      setIsLoading(false);
+      setIsLoading(false)
       if(r.ok) {
         r.json()
         .then(newUser => onLogIn(newUser))
         history.push('/')
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => setErrors(err.errors))
       }
     })
     setUsername("")
@@ -78,7 +78,7 @@ function RegisterForm({ onLogIn }) {
         </Link>
     </div>
         </div>
-  );
+  )
 }
 
-export default RegisterForm;
+export default RegisterForm

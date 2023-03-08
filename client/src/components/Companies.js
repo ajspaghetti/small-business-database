@@ -1,16 +1,13 @@
-import React from "react";
+import React from "react"
 import { useState, useEffect } from 'react'
 import Company from './Company'
 // import CompanyForm from './CompanyForm'
 
-function Companies() {
-    const [client_companies, setClientCompanies] = useState([])
+function Companies({
+    client_companies,
+    setClientCompanies
+}) {
 
-    useEffect(() => {
-        fetch('/client_companies')
-        .then(r => r.json())
-        .then(client_companies => setClientCompanies(client_companies))
-    }, [])
 
     return (
         <div>

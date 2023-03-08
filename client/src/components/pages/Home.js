@@ -1,8 +1,6 @@
-import React from "react";
-import LoginForm from './LoginForm';
+import React from "react"
+import LoginForm from './LoginForm'
 import logoNoBackground from "../../assets/logo-white.png"
-import { CenterFocusStrong } from "@mui/icons-material";
-
 
 function Home({
     currentUser
