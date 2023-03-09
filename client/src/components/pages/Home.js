@@ -6,7 +6,7 @@ function Home({
     currentUser
 }) {
     
-    console.log(currentUser)
+    // console.log(currentUser)
 
     return(
 

@@ -1,7 +1,12 @@
 import React from "react"
 
 function CompanyForm({
-    companies
+    client_companies,
+    setClientCompanies,
+    addresses,
+    setAddresses,
+    zips,
+    setZips
 }) {
 
 

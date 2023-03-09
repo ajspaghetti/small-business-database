@@ -1,7 +1,19 @@
 import React from "react"
 
 function ContractForm({
-    contracts
+    contracts,
+    setContracts,
+    projects,
+    setProjects,
+    client_companies,
+    setClientCompanies,
+    clients,
+    setClients,
+    employees,
+    setEmployees,
+    subcontractors,
+    setSubcontractors,
+    currentUser
 }) {
 
 

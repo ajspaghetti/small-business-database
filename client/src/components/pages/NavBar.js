@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import logoNoBackground from '../../assets/logoNoBackground.png'
 import "../../styles/App.css"
 
 function Navbar({
@@ -13,15 +14,17 @@ function Navbar({
     })
         .then(() => onLogOut())
   }
-
+  
+  const logo = logoNoBackground
   
 
   return (
     <nav className="navbar-container">
           <ul className="nav-links">
-            <li>
-              <a href="/" to="/" title="Home">urDB</a>
-            </li>
+            
+            <a href="/" to="/">
+              <img className="nav-logo" src={logo} title="Home" alt="navLogo"></img>
+            </a>
             <li>          
               <a className="nav-item"href="/management/contracts" to="/management/contracts">Contracts</a>
             </li>
@@ -43,9 +46,9 @@ function Navbar({
             <li>
               <a className="nav-item"href="/matrix/skills" to="/matrix/skills">Skills</a>
             </li>
-            <li>
-              <a className="nav-item"href="/users/" to="/users/">Accounts</a>
-            </li>
+            {/* <li>
+              <a className="nav-item"href="/users/" to={`/users/${currentUser.id}`}>Accounts</a>
+            </li> */}
             <li>
               <a className="nav-item"href="/" to="/logout" onClick={handleLogOut}>Log Out</a>
             </li>

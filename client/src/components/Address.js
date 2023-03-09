@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from 'react-router-dom'
 
 function Address({
     address
@@ -10,14 +11,13 @@ function Address({
                 <div className="card-details">
                     <ul className="cards-ul">
                         <li className="card-li">
-                            <div>
-                            <h4>Address</h4>
-                            <p to={`/addresses/${address.id}`}></p>
+                            <Link to={`/addresses/${address.id}`}>
+                            <h3>Address</h3>
+                            </Link>
                             <div>
                                 <p>{address.line_one}</p>
                                 <p>Unit: {address.line_two}</p>
                                 <p>{address.zip.city}, {address.zip.state}  {address.zip.zip_code}</p>
-                            </div>
                             </div>
                         </li>
                     </ul>

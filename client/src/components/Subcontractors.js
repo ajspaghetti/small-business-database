@@ -4,7 +4,13 @@ import SubForm from "./SubForm"
 
 function Subcontractors({
     subcontractors,
-    setSubcontractors
+    setSubcontractors,
+    addresses,
+    setAddresses,
+    zips,
+    setZips,
+    skills,
+    setSkills
 }) {
 
     return (
@@ -21,6 +27,19 @@ function Subcontractors({
                                     subcontractor={subcontractor}
                                 />) : null }
                     </div>
+                </div>
+                <br />
+                <div>
+                    <SubForm
+                       subcontractors={subcontractors}
+                       setSubcontractors={setSubcontractors}
+                       addresses={addresses}
+                       setAddresses={setAddresses}
+                       zips={zips}
+                       setZips={setZips}
+                       skills={skills}
+                       setSkills={setSkills} 
+                    />
                 </div>
             </div>
         </div>

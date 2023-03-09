@@ -4,7 +4,9 @@ import ClientForm from './ClientForm'
 
 function Clients({
     clients,
-    setClients
+    setClients,
+    client_companies,
+    setClientCompanies
 }) {
     
 
@@ -22,6 +24,15 @@ function Clients({
                                     client={client}
                                 />) : null }
                     </div>
+                </div>
+                <br />
+                <div>
+                    <ClientForm 
+                        clients={clients}
+                        setClients={setClients}
+                        client_companies={client_companies}
+                        setClientCompanies={setClientCompanies}
+                    />
                 </div>
             </div>
         </div>

@@ -5,7 +5,9 @@ import AddressForm from './AddressForm'
 
 function Addresses({
     addresses,
-    setAddresses
+    setAddresses,
+    zips,
+    setZips
 }) {
 
     return (
@@ -22,6 +24,15 @@ function Addresses({
                                     address={address}
                                 />) : null }
                     </div>
+                </div>
+                <br />
+                <div>
+                    <AddressForm 
+                        addresses={addresses}
+                        setAddresses={setAddresses}
+                        zips={zips}
+                        setZips={setZips}
+                    />
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
-import Login from "./components/pages/Login"
+import LoginForm from "./components/pages/LoginForm"
 import Home from "./components/pages/Home"
 import NavBar from "./components/pages/NavBar"
 import User from "./components/User"
@@ -24,9 +24,9 @@ import Addresses from "./components/Addresses"
 import Matrix from './components/pages/Matrix'
 import Hris from './components/pages/Hris'
 import Management from './components/pages/Management'
+import UserContracts from "./components/UserContracts"
 // import { UserContext } from "./components/pages/UserContext"
 // import WelcomeMessage from './components/pages/WelcomeMessage'
-
 
 function App() {
 
@@ -34,9 +34,10 @@ function App() {
     const [searchTerm, setSearchTerm] = useState("")
   //
   
-  // User LogIn/LogOut
+  // User
     const [currentUser, setCurrentUser] = useState(null)
     const [displayCard, setDisplayCard] = useState(null)
+
     useEffect(() => {
       fetch("/me").then((r) => {
         if (r.ok) {
@@ -61,20 +62,40 @@ function App() {
 
   // Addresses
     const [addresses, setAddresses] = useState([])
+    const [showAddressForm, setShowAddressForm] = useState(false)
       useEffect(() => {
           fetch('/addresses')
           .then(r => r.json())
           .then(addresses => setAddresses(addresses))
       }, [])
+
+      function toggleAddressForm() {
+        setShowAddressForm(!showAddressForm)
+      }
+
+      function onSubmitNewAddress(newAddress) {
+        setAddresses([...addresses, newAddress])
+        toggleAddressForm()
+      }
   //
 
   // Skills
     const [skills, setSkills] = useState([])
+    const [showSkillForm, setShowSkillForm] = useState(false)
       useEffect(() => {
           fetch('/skills')
           .then(r => r.json())
           .then(skills => setSkills(skills))
       }, [])
+
+    function toggleSkillForm() {
+      setShowSkillForm(!showSkillForm)
+    }
+
+    function onSubmitNewSkill(newSkill) {
+      setSkills([...skills, newSkill])
+      toggleSkillForm()
+    }
   //
 
   // Clients
@@ -106,29 +127,60 @@ function App() {
 
   // Employees
     const [employees, setEmployees] = useState([])
+    const [showEmployeeForm, setShowEmployeeForm] = useState(false)
     useEffect(() => {
         fetch('/employees')
         .then(r => r.json())
         .then(employees => setEmployees(employees))
     }, [])
+
+    function toggleEmployeeForm() {
+      setShowEmployeeForm(!showEmployeeForm)
+    }
+
+    function onSubmitNewEmployee(newEmployee) {
+      setEmployees([...employees, newEmployee])
+      toggleEmployeeForm()
+    }
+
   //
 
   // Projects
     const [projects, setProjects] = useState([])
+    const [showProjectForm, setShowProjectForm] = useState(false)
     useEffect(() => {
         fetch('/projects')
         .then(r => r.json())
         .then(projects => setProjects(projects))
     }, [])
+
+    function toggleProjectForm() {
+      setShowProjectForm(!showProjectForm)
+    }
+
+    function onSubmitNewProject(newProject) {
+      setProjects([...projects, newProject])
+      toggleProjectForm()
+    }
   //
 
   // Subcontractors
     const [subcontractors, setSubcontractors] = useState([])
+    const [showSubForm, setShowSubForm] = useState(false)
     useEffect(() => {
         fetch('/subcontractors')
         .then(r => r.json())
         .then(subcontractors => setSubcontractors(subcontractors))
     }, [])
+
+    function toggleSubForm() {
+      setShowSubForm(!showSubForm)
+    }
+
+    function onSubmitNewSub(newSub) {
+      setSubcontractors([...subcontractors, newSub])
+      toggleSubForm()
+    }
   //
 
   // Zips
@@ -138,6 +190,7 @@ function App() {
         .then(r => r.json())
         .then(zips => setZips(zips))
     }, [])
+
   //
 
 
@@ -179,103 +232,186 @@ function App() {
             <Employees 
               employees={employees}
               setEmployees={setEmployees}
+              addresses={addresses}
+              setAddresses={setAddresses}
+              zips={zips}
+              setZips={setZips}
+              skills={skills}
+              setSkills={setSkills}
+              onSubmitNewEmployee={onSubmitNewEmployee}
+              onSubmitNewSkill={onSubmitNewSkill}
+              onSubmitNewAddress={onSubmitNewAddress}
+              displayCard={displayCard}
+              setDisplayCard={setDisplayCard}
             />
           </Route>
 
-          <Route exact path="/hris/employees/:id">
-            <Employee />
-          </Route>
-
+          
+            {employees.map((employee) => (
+              <Route exact path={`/hris/employees/${employee.id}`} key={employee.id}>
+                <Employee 
+                  employee={employee}
+                />
+              </Route>
+            ))}
+            
 
           <Route exact path="/hris/subcontractors">
             <Subcontractors 
               subcontractors={subcontractors}
               setSubcontractors={setSubcontractors}
+              addresses={addresses}
+              setAddresses={setAddresses}
+              zips={zips}
+              setZips={setZips}
+              skills={skills}
+              setSkills={setSkills}
+              onShowDetails={onShowDetails}
+              displayCard={displayCard}
+              setDisplayCard={setDisplayCard}
             />
           </Route>
-
-          <Route exact path="/hris/subcontractors/:id">
-            <Subcontractor />
-          </Route>
+          {subcontractors.map((subcontractor) => (
+            <Route exact path={`/hris/subcontractors/${subcontractor.id}`} key={subcontractor.id}>
+              <Subcontractor 
+                subcontractor={subcontractor}
+              />
+            </Route>
+          ))}
 
           <Route exact path="/matrix/skills">
             <Skills 
               skills={skills}
               setSkills={setSkills}
+              employees={employees}
+              setEmployees={setEmployees}
+              subcontractors={subcontractors}
+              setSubcontractors={setSubcontractors}
             />
           </Route>
-          
-          <Route exact path="/matrix/skills/:id">
-            <Skill />
+
+          {skills.map((skill) => (
+          <Route exact path={`/matrix/skills/${skill.id}`} key={skill.id}>
+            <Skill
+              skill={skill}
+            />
           </Route>
+          ))}
 
           <Route exact path="/management/contracts">
             <Contracts 
               contracts={contracts}
               setContracts={setContracts}
+              projects={projects}
+              setProjects={setProjects}
+              client_companies={client_companies}
+              setClientCompanies={setClientCompanies}
+              clients={clients}
+              setClients={setClients}
+              employees={employees}
+              setEmployees={setEmployees}
+              subcontractors={subcontractors}
+              setSubcontractors={setSubcontractors}
+              currentUser={currentUser}
             />
           </Route>
 
-          <Route exact path="/management/contracts/:id">
-            <Contract />
-          </Route>
+          {contracts.map((contract) => (
+            <Route exact path={`/management/contracts/${contract.id}`} key={contract.id}>
+              <Contract
+                contract={contract}
+                test={console.log(contract)}
+              />
+            </Route>
+          ))}
 
           <Route exact path="/management/projects">
             <Projects 
               projects={projects}
               setProjects={setProjects}
+              addresses={addresses}
+              setAddresses={setAddresses}
+              zips={zips}
+              setZips={setZips}
+              currentUser={currentUser}
             />
           </Route>
                
-          <Route exact path="/management/projects/:id">
-            <Project />
-          </Route>
+          {projects.map((project) => (
+            <Route exact path={`/management/projects/${project.id}`} key={project.id}>
+              <Project
+                project={project}
+              />
+            </Route>
+          ))}
 
           <Route exact path="/management/client_companies">
             <Companies 
-              companies={client_companies}
+              client_companies={client_companies}
               setCompanies={setClientCompanies}
+              addresses={addresses}
+              setAddresses={setAddresses}
+              zips={zips}
+              setZips={setZips}
             />
           </Route>
 
-          <Route exact path="/management/client_companies/:id">
-            <Company />
+          {client_companies.map((client_company) => (
+          <Route exact path={`/management/client_companies/${client_company.id}`} key={client_company.id}>
+            <Company 
+              client_companies={client_companies}
+            />
           </Route>
-
+          ))}
           <Route exact path="/management/clients">
             <Clients 
               clients={clients}
               setClients={setClients}
+              client_companies={client_companies}
+              setClientCompanies={setClientCompanies}
             />
           </Route>
-
-          <Route exact path="/management/clients/:id">
-            <Client />
+          
+          {clients.map((client) => (
+            <Route exact path={`/management/clients/${client.id}`} key={client.id}>
+            <Client 
+              client={client}
+            />
           </Route>
+          ))}
+          
 
           <Route exact path="/regional/addresses">
             <Addresses 
               addresses={addresses}
               setAddresses={setAddresses}
+              zips={zips}
+              setZips={setZips}
             />
           </Route>
-
-          <Route exact path="/regional/addresses/:id">
-            <Address />
-          </Route>
-
-          <Route exact path="/users/:id">
+          {addresses.map((address) => (
+            <Route exact path={`/regional/addresses/${address.id}`} key={address.id}>
+              <Address
+                address={address}
+              />
+            </Route>
+          ))}
+          
+          {/* <Route exact path={`/users/${currentUser.id}`}>
             <User
-
               onShowDetails={onShowDetails}
               displayCard={displayCard}
               currentUser={currentUser}
               onDestroyUser={onDestroyUser}
             />
+          </Route> */}
+
+          <Route exact path="/users/:id/contracts">
+            <UserContracts />
           </Route>
 
           <Route exact path="/login" >
-            <Login
+            <LoginForm
               onLogIn={onLogIn}
             />
           </Route>
