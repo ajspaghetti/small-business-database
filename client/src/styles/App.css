@@ -1,5 +1,5 @@
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
+/* @import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css"; */
 
 .App {
   width: 100%;
@@ -129,32 +129,47 @@
   padding-right:3%;
   padding-left:3%;
   padding-bottom: 2%;
-  background-color: lightgray;
-  /* top: 0; */
-  /* z-index: 110; */
+  background-color:rgb(48, 48, 118);
+
 }
 
 .nav-links{
   display: flex;
+  justify-content: center;
+  max-width: 95%;
+  
   /* margin-right: 5rem; */
 }
+
+.nav-links{
+  margin-left: 400;
+
+}
 .nav-links li{
-  margin-left: 10px;
+  margin-left: 20px;
   list-style: none;
-  /* outline: solid; */
   border: black;
   padding: 8px;
-  background-color: rgb(48, 48, 118);
+  background-color: rgba(208, 96, 27, 0.942);
   border-radius: 8px;
   color: white;
-  /* border: 1px black; */
-  box-shadow: 3px 3px 6px grey;
+  box-shadow: 1px 1px 2px black;
+  width: 200px;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 40px;
+  margin-top:22px;
 }
 .nav-links a{
   font-size: 1.25rem;
-  font-weight: 300;
   color: white;
+  font-weight: 600;
+  font-size: 20px;
   text-decoration: none;
+  text-align: center;
+  align-items: center;
+  align-content: center;
   /* margin-right: 1rem; */
   /* margin-left: 1rem; */
 
@@ -200,7 +215,12 @@ div.cards {
 }
 
 .card-li {
-  padding-left: 2.5%
+  padding-left: 2.5%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+
 }
 
 .card {
@@ -231,10 +251,9 @@ button {
   /* outline: solid; */
   border: black;
   padding: 8px;
-  background-color: rgb(48, 48, 118);
+  background-color: rgba(208, 96, 27, 0.942);
   border-radius: 8px;
   color: white;
-  /* border: 1px black; */
   box-shadow: 3px 3px 6px grey;
   width: 8rem;
 }
@@ -276,4 +295,12 @@ button {
 .form-horizontal label {
   padding-left: 6px;
   padding-right: 6px
+}
+
+.nav-logo {
+  /* padding-right:5%; */
+  margin-left: -300px;
+  width:40%;
+  height:auto;
+  border-radius: 25px;
 }

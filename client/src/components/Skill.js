@@ -1,4 +1,6 @@
 import React from "react"
+import { Link } from 'react-router-dom'
+// import Employees from "./Employees"
 
 function Skill({
     skill
@@ -17,11 +19,16 @@ function Skill({
                     <ul className="cards-ul">
                         <li className="card-li">
                             <div>
-                            <p to={`/skills/${skill.id}`}></p>
-                            <div className="card-buttons">
+                            <Link to={`/matrix/skills/${skill.id}`}>
+                                <h3>Skill</h3>
+                            </Link>
+                            <div>
                                 <h4>{skill.skill_name}</h4><br/>
-                                <div>Employees: <br/><ul>{listEmployees}</ul></div><br/>
-                                <div>Subcontractors: <br/><ul>{listSubs}</ul></div><br/>
+                                {listEmployees.length > 0 ? <div>Employees: <br/><ul>{listEmployees}</ul></div> : null }<br/>
+                                {listSubs.length > 0 ? <div>Subcontractors: <br/><ul>{listSubs}</ul></div> : null }<br/>
+                            </div>
+                            <div className="card-buttons">
+
                             </div>
                             </div>
                         </li>

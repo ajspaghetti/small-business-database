@@ -1,14 +1,18 @@
 import React from "react"
-import { useState, useEffect } from 'react'
 import Skill from './Skill'
 import SkillForm from './SkillForm'
 
-function Skills({
+function Skills(
+{
     skills,
-    setSkills
-}) {
+    setSkills,
+    employees,
+    setEmployees,
+    subcontractors,
+    setSubcontractors
+}
+) {
     
-
     return (
         <div>
             <div className="container">
@@ -23,6 +27,17 @@ function Skills({
                                     skill={skill}
                                 />) : null }
                     </div>
+                </div>
+                <br />
+                <div>
+                    <SkillForm
+                        skills={skills}
+                        setSkills={setSkills}
+                        employees={employees}
+                        setEmployees={setEmployees}
+                        subcontractors={subcontractors}
+                        setSubcontractors={setSubcontractors}
+                    />
                 </div>
             </div>
         </div>

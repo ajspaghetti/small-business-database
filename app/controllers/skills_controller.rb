@@ -9,7 +9,7 @@ class SkillsController < ApplicationController
 
     def show
         skill = Skill.find(params[:id])
-        render json: skill, status: :ok, serializer: SkillEmployeesSerializer
+        render json: skill, status: :ok#, serializer: SkillEmployeesSerializer
     end
 
     def create

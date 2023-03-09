@@ -1,11 +1,24 @@
+import { SettingsPhoneOutlined } from "@mui/icons-material"
 import React, { useState } from "react"
 
 function EmployeeForm(
     {
-        employees,
-        setEmployees
+      employees,
+      setEmployees,
+      addresses,
+      setAddresses,
+      zips,
+      setZips,
+      skills,
+      setSkills,
+      onSubmitNewEmployee,
+      onSubmitNewAddress,
+      onSubmitNewSkills
     }
 ) {
+
+  // Employee POST
+  const [employee, setEmployee] = useState("")
   const [firstName, setFirstName] = useState("")
   const [middleName, setMiddleName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -13,79 +26,164 @@ function EmployeeForm(
   const [gender, setGender] = useState("")
   const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
-  const [addressId, setAddressId] = useState("")
+  const [addressId, setAddressId] = useState(0)
   const [taxNumber, setTaxNumber] = useState("")
   const [jobTitle, setJobTitle] = useState("")
-  const [skillId, setSkillId] = useState("")
-  const [startDate, setStartDate] = useState("")
-  const [hourlyOrSalary, setHourlyOrSalary] = useState("")
-  const [hourlyRate, setHourlyRate] = useState("")
-  const [annualSalary, setAnnualSalary] = useState("")
+  const [skillId, setSkillId] = useState(0)
+  const [startDate, setStartDate] = useState(Date)
+  const [hourlyOrSalary, setHourlyOrSalary] = useState("") // default will be Hourly
+  const hS = ["Hourly", "Salary"] // Array for mapping hourlyOrSalary options
+  const [hourlyRate, setHourlyRate] = useState(0)
+  const [annualSalary, setAnnualSalary] = useState(0)
   const [ptoPolicy, setPtoPolicy] = useState("")
-  const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState(true)
   const [notes, setNotes] = useState("")
 
-    const hS = ["Hourly", "Salary"]
+  // Address POST
+  const [address, setAddress] = useState("")
+  const [line1, setLine1] = useState("")
+  const [line2, setLine2] = useState("")
+  const [zipId, setZipId] = useState(0)
 
-  const handleSubmit = (e) => {
+  // Skills POST
+  const [skill, setSkill] = useState("")
+  const [skillTitle, setSkillTitle] = useState("")
+  const [employeeId, setEmployeeId] = useState(employee.id)
+  const [subcontractorId, setSubcontractorId] = useState(0)
+
+  // Zip GET, Search, Filter
+  const [zip, setZip] = useState("")
+
+
+  const findZip = (zipCode) => {
+    let selectZip
+    const zipCodes = zips.map((zip_code) => {
+      if (zip_code.zip_code.includes(zipCode)) {
+        selectZip = zip.find(
+          (zip) => zip.zip_code === zipCode
+        )
+      }
+      return selectZip
+    })
+    setZip(selectZip)
+  }
+
+  // console.log([hS[0]])
+
+
+  const handleAddEmployees = (e) => {
     e.preventDefault()
+    const employeeDetails = {
+      first_name: firstName,
+      middle_name: middleName,
+      last_name: lastName,
+      suffix: suffix,
+      gender: gender,
+      emp_phone: phone,
+      emp_email: email,
+      address_id: addressId,
+      tax_number: taxNumber,
+      job_title: jobTitle,
+      skill_id: skillId,
+      start_date: startDate,
+      hourly_or_salary: hourlyOrSalary,
+      hourly_rate: hourlyRate,
+      annual_salary: annualSalary,
+      pto_policy: ptoPolicy,
+      active: isActive,
+      emp_notes: notes,
+    }
     fetch("/employees", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        first_name: firstName,
-        middle_name: middleName,
-        last_name: lastName,
-        suffix: suffix,
-        gender: gender,
-        emp_phone: phone,
-        emp_email: email,
-        address_id: addressId,
-        tax_number: taxNumber,
-        job_title: jobTitle,
-        skill_id: skillId,
-        start_date: startDate,
-        hourly_or_salary: hourlyOrSalary,
-        hourly_rate: hourlyRate,
-        annual_salary: annualSalary,
-        pto_policy: ptoPolicy,
-        active: isActive,
-        emp_notes: notes,
-      }),
+      body: JSON.stringify(employeeDetails),
     })
-      .then((response) => response.json())
-      .then((newEmployee) => {
-        console.log(newEmployee)
-        // setEmployees([...employees, newEmployee])
-            // reset form values
-            setFirstName("")
-            setMiddleName("")
-            setLastName("")
-            setSuffix("")
-            setGender("")
-            setPhone("")
-            setEmail("")
-            setAddressId(parseInt(""))
-            setTaxNumber("")
-            setJobTitle("")
-            setSkillId(parseInt(""))
-            setStartDate(Date)
-            setHourlyOrSalary("")
-            setHourlyRate(parseInt(""))
-            setAnnualSalary(parseInt(""))
-            setPtoPolicy("")
-            setIsActive(false)
-            setNotes("")
+      .then(response => {
+        if(response.ok) {
+          response.json()
+          .then(newEmployee => onSubmitNewEmployee(newEmployee))
+        }
+        alert('Thanks for submitting!')
+        // .catch((error) => console.log(error))
       })
-      .catch((error) => console.log(error))
+    setFirstName("")
+    setMiddleName("")
+    setLastName("")
+    setSuffix("")
+    setGender("")
+    setPhone("")
+    setEmail("")
+    setAddressId(0)
+    setTaxNumber("")
+    setJobTitle("")
+    setSkillId(0)
+    setStartDate(Date)
+    setHourlyOrSalary("")
+    setHourlyRate(0)
+    setAnnualSalary(0)
+    setPtoPolicy("")
+    setIsActive(true)
+    setNotes("")
+  }
+
+  const handleAddAddresses = (e) => {
+    e.preventDefault()
+    const addressDetails = {
+      line_one: line1,
+      line_two: line2,
+      zip_id: zip.id,
+    }
+    fetch("/addresses", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addressDetails),
+    })
+      .then(response => {
+        if(response.ok) {
+          response.json()
+          .then(newAddress => onSubmitNewAddress(newAddress))
+        }
+      })
+    setLine1("")
+    setLine2("")
+    setZipId(0)
+  }
+      
+  
+
+  const handleAddSkills = (e) => {
+    e.preventDefault()
+    const skillsDetails = {
+      skill_title: skillTitle,
+      employee_id: employee.id,
+      subcontractor_id: 0,
+    }
+    fetch("/skills", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(skillsDetails),
+    })
+      .then((response) => {
+        if(response.ok) {
+          response.json()
+          .then(newSkill => onSubmitNewSkills(newSkill))
+        }
+      })
+    setSkillTitle("")
+    setEmployeeId(0)
+    setSubcontractorId(0)
   }
 
   return (
     <div>
       <div className="form-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleAddEmployees}>
           <div className="form-horizontal">
             <label>
               First Name
@@ -160,7 +258,7 @@ function EmployeeForm(
           <br />
           <br />
           <label>
-            Address ID:
+            Address:
             <br />
             <input
               type="number"

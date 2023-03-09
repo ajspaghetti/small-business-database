@@ -4,7 +4,12 @@ import ProjectForm from './ProjectForm'
 
 function Projects({
     projects,
-    setProjects
+    setProjects,
+    addresses,
+    setAddresses,
+    zips,
+    setZips,
+    currentUser
 }) {
 
     return (
@@ -22,6 +27,18 @@ function Projects({
                             />) : null }
                 </div>
             </div>
+            <br />
+                <div>
+                    <ProjectForm
+                        projects={projects}
+                        setProjects={setProjects}
+                        addresses={addresses}
+                        setAddresses={setAddresses}
+                        zips={zips}
+                        setZips={setZips}
+                        currentUser={currentUser}
+                    />
+                </div>
         </div>
     </div>
     )

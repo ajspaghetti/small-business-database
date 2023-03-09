@@ -1,7 +1,10 @@
 import React from "react"
 
 function ClientForm({
-    clients
+    clients,
+    setClients,
+    client_companies,
+    setClientCompanies
 }) {
 
 

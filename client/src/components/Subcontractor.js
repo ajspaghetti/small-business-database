@@ -21,9 +21,8 @@ function Subcontractor({
                     <ul className="cards-ul">
                         <li className="card-li">
                             <div>
-                            <Link to={`/subcontractors/${subcontractor.id}`}></Link>
+                            <Link to={`/hris/subcontractors/${subcontractor.id}`}><h4>{subcontractor.company_legal_name}<br/>DBA: {subcontractor.company_dba}</h4></Link>
                             <div>
-                                <h5>{subcontractor.company_legal_name}<br/>DBA: {subcontractor.company_dba}</h5>
                                 <p>Address: <br/>{subcontractor.address.line_one}, {subcontractor.address.line_two}</p>
                                 <p>Contact: {subcontractor.primary_poc_name}<br/>Role: {subcontractor.poc_role}<br/>Phone: {subcontractor.poc_phone}<br/>Email: {subcontractor.poc_email}</p>
                                 <p>EIN or TAX ID: ***-**-{subcontractor.sub_tax_number.slice(6, 12)}</p>

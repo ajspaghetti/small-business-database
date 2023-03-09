@@ -1,7 +1,10 @@
 import React from "react"
 
 function AddressForm({
-    addresses
+    addresses,
+    setAddresses,
+    zips,
+    setZips
 }) {
 
 
