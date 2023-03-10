@@ -26,7 +26,6 @@ import Hris from "./components/pages/Hris";
 import Management from "./components/pages/Management";
 import UserContracts from "./components/UserContracts";
 import UserProvider from './components/pages/UserProvider.js'
-import { UserContext } from "./components/pages/UserProvider";
 import WelcomeMessage from "./components/pages/WelcomeMessage";
 
 function App() {

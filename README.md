@@ -2,7 +2,7 @@
 
 ### urDB - Employee and Project Management Database for Small Businesses
 
-# Sections
+# Sections Index
 [intro] - App Purpose & Functionality
 [1] - Ruby Version
 [2] - System Dependencies

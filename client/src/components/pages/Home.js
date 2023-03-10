@@ -13,6 +13,8 @@ function Home() {
 
         <div className='homepage'>
             <div className='home-text'>
+                <div></div>
+                
                 <div className="login-home">
                 {user == null ? 
                 (
@@ -22,8 +24,8 @@ function Home() {
                         <LoginForm />
                         <br/>
                     </div>
+                    
                 )
-                
                 :
                 <div>
                     <h1>Welcome, {user.username}!</h1>
@@ -55,10 +57,17 @@ function Home() {
                         <button>Addresses</button>
                     </Link>
                 </div>
-                
-                } 
-                
+                }   
             </div>
+            <div></div>
+            <div className="paragraph">
+                <p>
+                urDB is an Application made with small businesses in mind. <br/><br/>
+                Small businesses struggle with digitalization because they don't have the typical resources that a large company has, whether it be financially or lack of time, personnel, or knowledge.<br/><br/>
+                What these businesses don't realize is that so many important things fall through the cracks when they don't have readily accessible documentation on their employees.<br/><br/>
+                This tool is meant to be a simple, quick, and painless way for small businesses to manage their workforce and all their data in a secure, easy-to-use suite.<br/>
+                </p>
+                </div>  
         </div>
         </div>
 
