@@ -55,7 +55,7 @@ function App() {
 
   function onSubmitNewAddress(newAddress) {
     setAddresses([...addresses, newAddress]);
-    toggleAddressForm();
+    // toggleAddressForm();
   }
   //
 
@@ -366,6 +366,7 @@ function App() {
                 setAddresses={setAddresses}
                 zips={zips}
                 setZips={setZips}
+                onSubmitNewAddress={onSubmitNewAddress}
               />
             </Route>
             {addresses.map((address) => (

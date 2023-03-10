@@ -40,9 +40,8 @@ function Project({
                     <ul className="cards-ul">
                         <li className="card-li">
                             <div>
-                            <Link to={`/projects/${project.id}`}></Link>
+                            <Link to={`/projects/${project.id}`}><h3>{project.project_name}</h3></Link>
                             <div>
-                                <h5>{project.project_name}</h5>
                                 <p>Description:<br/>{project.project_desc}</p>
                                 <p>Owner: {project.user.username}</p>
                                 <p>Location: {project.address.line_one}, {project.address.line_two}</p>    

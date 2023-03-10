@@ -21,7 +21,7 @@ function Contracts({
 }) {
 
     const { user, setUser } = useContext(UserContext)
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(null)
 
     return (
         <div>

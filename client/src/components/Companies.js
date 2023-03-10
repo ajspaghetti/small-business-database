@@ -14,7 +14,7 @@ function Companies({
 }) {
 
     const { user } = useContext(UserContext)
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(null)
 
     return (
         <div>

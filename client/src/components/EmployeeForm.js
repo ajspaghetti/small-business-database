@@ -1,5 +1,5 @@
-import { SettingsPhoneOutlined } from "@mui/icons-material"
 import React, { useState } from "react"
+import AddressForm from './AddressForm'
 
 function EmployeeForm(
     {
@@ -53,20 +53,6 @@ function EmployeeForm(
 
   // Zip GET, Search, Filter
   const [zip, setZip] = useState("")
-
-
-  const findZip = (zipCode) => {
-    let selectZip
-    const zipCodes = zips.map((zip_code) => {
-      if (zip_code.zip_code.includes(zipCode)) {
-        selectZip = zip.find(
-          (zip) => zip.zip_code === zipCode
-        )
-      }
-      return selectZip
-    })
-    setZip(selectZip)
-  }
 
   // console.log([hS[0]])
 
@@ -153,7 +139,6 @@ function EmployeeForm(
     setZipId(0)
   }
       
-  
 
   const handleAddSkills = (e) => {
     e.preventDefault()
@@ -183,6 +168,7 @@ function EmployeeForm(
   return (
     <div>
       <div className="form-container">
+
         <form onSubmit={handleAddEmployees}>
           <div className="form-horizontal">
             <label>
@@ -260,11 +246,14 @@ function EmployeeForm(
           <label>
             Address:
             <br />
+            <div>
             <input
-              type="number"
-              value={addressId}
-              onChange={(e) => setAddressId(e.target.value)}
+              type="text"
+              placeholder="Address"
             />
+            <AddressForm />
+            </div>
+            
           </label>
           <br />
           <br />

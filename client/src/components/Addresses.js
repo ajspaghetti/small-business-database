@@ -9,11 +9,14 @@ function Addresses({
     addresses,
     setAddresses,
     zips,
-    setZips
+    setZips,
+    onSubmitNewAddress
 }) {
 
     const { user } = useContext(UserContext)
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(null)
+    // const zip = zips.map((zip))
+    // console.log(zip.id)
 
     return (
         <div>
@@ -31,13 +34,15 @@ function Addresses({
                     </div>
                 </div>
                 <br />
-                <div>
+                <div>             
                     <AddressForm 
                         addresses={addresses}
                         setAddresses={setAddresses}
                         zips={zips}
                         setZips={setZips}
+                        onSubmitNewAddress={onSubmitNewAddress}
                     />
+                    
                 </div>
                 <div className='footer'>
                     <Link to='/'>
