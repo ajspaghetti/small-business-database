@@ -1,4 +1,5 @@
 class SubcontractorsController < ApplicationController
+    include ActionController::Cookies
 
     skip_before_action :authenticated_user
 
@@ -15,7 +16,7 @@ class SubcontractorsController < ApplicationController
     end
 
     def create
-        new_sub = Subcontractor.create!(sub_params)
+        new_sub = Subcontractor.create(sub_params)
         render json: new_sub, status: :created
     end
 

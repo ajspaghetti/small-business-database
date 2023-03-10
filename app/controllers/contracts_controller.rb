@@ -1,4 +1,5 @@
 class ContractsController < ApplicationController
+    include ActionController::Cookies
     
     skip_before_action :authenticated_user
 
@@ -13,7 +14,7 @@ class ContractsController < ApplicationController
     end
 
     def create
-        new_contract = Contract.create!(contract_params)
+        new_contract = Contract.create(contract_params)
         render json: new_contract, status: :created
     end
 

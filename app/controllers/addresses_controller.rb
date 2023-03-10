@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+    include ActionController::Cookies
     
     skip_before_action :authenticated_user
     
@@ -13,7 +14,7 @@ class AddressesController < ApplicationController
     end
 
     def create
-        new_address = Address.create!(address_params)
+        new_address = Address.create(address_params)
         render json: new_address, status: :created
     end
 

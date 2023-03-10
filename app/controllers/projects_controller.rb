@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+    include ActionController::Cookies
 
     skip_before_action :authenticated_user
 
@@ -13,7 +14,7 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        new_project = Project.create!(project_params)
+        new_project = Project.create(project_params)
         render json: new_project, status: :created
     end
 

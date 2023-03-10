@@ -1,8 +1,13 @@
 import React from "react"
+import { Link } from 'react-router-dom'
+import { useContext, useState } from 'react';
+import { UserContext } from './pages/UserProvider';
 
 function Company({
     company
 }) {
+    const { user } = useContext(UserContext);
+    const [clicked, setClicked] = useState(false)
 
     return (
         <div className="card-spacing">
@@ -11,9 +16,9 @@ function Company({
                     <ul className="cards-ul">
                         <li className="card-li">
                             <div>
-                            <p to={`/client_companies/${company.id}`}></p>
+                            <Link to={`/client_companies/${company.id}`}>                                <h3>{company.legal_name}<br/>DBA: {company.dba_name}</h3></Link>
                             <div>
-                                <h4>{company.legal_name}<br/>DBA: {company.dba_name}</h4>
+
                                 <p>Industry: {company.industry}</p>
                                 <p>Address: <br/>{company.address.line_one} {company.address.line_two} </p>
                                 <p>Contact: <br/>{company.co_phone}<br/>{company.co_email}</p>

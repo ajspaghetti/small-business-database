@@ -1,5 +1,6 @@
 class ClientCompaniesController < ApplicationController
-    
+    include ActionController::Cookies
+
     skip_before_action :authenticated_user
     
     def index
@@ -13,7 +14,7 @@ class ClientCompaniesController < ApplicationController
     end
 
     def create
-        new_company = ClientCompany.create!(company_params)
+        new_company = ClientCompany.create(company_params)
         render json: new_company, status: :created
     end
 

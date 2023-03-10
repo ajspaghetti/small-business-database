@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+    include ActionController::Cookies
     
     skip_before_action :authenticated_user
     
@@ -13,7 +14,7 @@ class ClientsController < ApplicationController
     end
 
     def create
-        new_client = Client.create!(client_params)
+        new_client = Client.create(client_params)
         render json: new_client, status: :created
     end
 

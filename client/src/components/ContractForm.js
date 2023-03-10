@@ -13,7 +13,7 @@ function ContractForm({
     setEmployees,
     subcontractors,
     setSubcontractors,
-    currentUser
+    user
 }) {
 
 

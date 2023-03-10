@@ -52,13 +52,13 @@
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  justify-content: left;
+  align-items: left;
+  align-content: left
 }
 
 .form input {
-  outline: solid;
+  /* outline: solid; */
   border: black;
   padding: 16px;
   background-color: grey;
@@ -71,10 +71,11 @@
 .home-text {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  justify-content: left;
+  align-items: left;
+  align-content: left;
   padding-top: 5rem;
+  padding-left: 10rem;
 }
 
 .search {
@@ -145,23 +146,23 @@
   margin-left: 400;
 
 }
+
 .nav-links li{
   margin-left: 20px;
   list-style: none;
-  border: black;
   padding: 8px;
-  background-color: rgba(208, 96, 27, 0.942);
   border-radius: 8px;
   color: white;
-  box-shadow: 1px 1px 2px black;
+  /* box-shadow: 1px 1px 2px black; */
   width: 200px;
   text-align: center;
   align-items: center;
   align-content: center;
-  margin-bottom: 40px;
-  margin-top:22px;
+  margin-bottom: 52px;
+  margin-top: 42px;
 }
-.nav-links a{
+
+.nav-links a {
   font-size: 1.25rem;
   color: white;
   font-weight: 600;
@@ -217,7 +218,7 @@ div.cards {
 .card-li {
   padding-left: 2.5%;
   justify-content: center;
-  text-align: center;
+  /* text-align: center; */
   align-items: center;
   align-content: center;
 
@@ -249,13 +250,14 @@ button {
   margin-left: 10px;
   list-style: none;
   /* outline: solid; */
-  border: black;
+  border: whitesmoke;
   padding: 8px;
   background-color: rgba(208, 96, 27, 0.942);
   border-radius: 8px;
   color: white;
-  box-shadow: 3px 3px 6px grey;
-  width: 8rem;
+  box-shadow: 2px 2px 4px black;
+  width: 9rem;
+  font-size: 18px;
 }
 
 .logo-container {
@@ -299,8 +301,54 @@ button {
 
 .nav-logo {
   /* padding-right:5%; */
+  margin-top:25px;
   margin-left: -300px;
-  width:40%;
+  width:50%;
   height:auto;
   border-radius: 25px;
 }
+
+.nav-links-login {
+  display:flex;
+  flex-direction: row;
+  justify-content: left;
+  
+}
+
+.nav-links-login li {
+  /* margin-left: 20px; */
+  list-style: none;
+  border: black;
+  padding: 8px;
+  background-color: rgba(208, 96, 27, 0.942);
+  border-radius: 8px;
+  color: white;
+  box-shadow: 1px 1px 2px black;
+  width: 200px;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 112.5px;
+  margin-top:75px;
+  margin-left:2%;
+}
+
+.nav-links-login a {
+  font-size: 1.25rem;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  /* margin-right: 1rem; */
+  /* margin-left: 1rem; */
+
+}
+
+.footer {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+

@@ -1,25 +1,65 @@
-import React from "react"
+import React, {useContext} from "react"
 import LoginForm from './LoginForm'
-import logoNoBackground from "../../assets/logo-white.png"
+import { Link } from 'react-router-dom'
+import { UserContext } from './UserProvider'
 
-function Home({
-    currentUser
-}) {
+
+function Home() {
+    const { user } = useContext(UserContext)
     
-    // console.log(currentUser)
+    // console.log(user)
 
     return(
 
         <div className='homepage'>
             <div className='home-text'>
-                <div className="logo-container"><img className="logo" src={logoNoBackground} alt="logo"></img></div>
                 <div className="login-home">
-                <h3>{currentUser ? `Welcome, ${currentUser.username}` : ""}</h3>
-                    <LoginForm />
-                    <br/>
-                    {/* <div>{currentUser}<div/> */}
+                {user == null ? 
+                (
+                    
+                    <div>
+                        <h3>Please Log In</h3>
+                        <LoginForm />
+                        <br/>
+                    </div>
+                )
+                
+                :
+                <div>
+                    <h1>Welcome, {user.username}!</h1>
+                    <Link to='/'>
+                        <button>Home</button>
+                    </Link>
+                    <Link to='/management/contracts'>
+                        <button>Contracts</button>
+                    </Link>
+                    <Link to='/management/projects'>
+                        <button>Projects</button>
+                    </Link>
+                    <Link to='/management/client_companies'>
+                        <button>Companies</button>
+                    </Link>
+                    <Link to='/management/clients'>
+                        <button>Clients</button>
+                    </Link>
+                    <Link to='/hris/employees'>
+                        <button>Employees</button>
+                    </Link>
+                    <Link to='/hris/subcontractors'>
+                        <button>Subcontractors</button>
+                    </Link>
+                    <Link to='/matrix/skills'>
+                        <button>Skills</button>
+                    </Link>
+                    <Link to='/regional/addresses'>
+                        <button>Addresses</button>
+                    </Link>
                 </div>
+                
+                } 
+                
             </div>
+        </div>
         </div>
 
     )

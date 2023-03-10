@@ -1,14 +1,22 @@
-import React from "react"
+import React, {useContext, useState} from "react"
 import Address from './Address'
 import AddressForm from './AddressForm'
+import {Link} from 'react-router-dom'
+import { UserContext } from './pages/UserProvider'
 
 
 function Addresses({
     addresses,
     setAddresses,
     zips,
-    setZips
+    setZips,
+    onSubmitNewAddress
 }) {
+
+    const { user } = useContext(UserContext)
+    const [clicked, setClicked] = useState(null)
+    // const zip = zips.map((zip))
+    // console.log(zip.id)
 
     return (
         <div>
@@ -26,13 +34,44 @@ function Addresses({
                     </div>
                 </div>
                 <br />
-                <div>
+                <div>             
                     <AddressForm 
                         addresses={addresses}
                         setAddresses={setAddresses}
                         zips={zips}
                         setZips={setZips}
+                        onSubmitNewAddress={onSubmitNewAddress}
                     />
+                    
+                </div>
+                <div className='footer'>
+                    <Link to='/'>
+                        <button>Home</button>
+                    </Link>
+                    <Link to='/management/contracts'>
+                        <button>Contracts</button>
+                    </Link>
+                    <Link to='/management/projects'>
+                        <button>Projects</button>
+                    </Link>
+                    <Link to='/management/client_companies'>
+                        <button>Companies</button>
+                    </Link>
+                    <Link to='/management/clients'>
+                        <button>Clients</button>
+                    </Link>
+                    <Link to='/hris/employees'>
+                        <button>Employees</button>
+                    </Link>
+                    <Link to='/hris/subcontractors'>
+                        <button>Subcontractors</button>
+                    </Link>
+                    <Link to='/matrix/skills'>
+                        <button>Skills</button>
+                    </Link>
+                    <Link to='/regional/addresses'>
+                        <button>Addresses</button>
+                    </Link>
                 </div>
             </div>
         </div>

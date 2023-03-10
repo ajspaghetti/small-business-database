@@ -1,13 +1,19 @@
 import React from "react"
 import { Link } from 'react-router-dom'
+import { useContext } from 'react';
+import { UserContext } from './pages/UserProvider';
+
 
 function Employee({
-    employee,
-    test
+    employee
+    // test
 }) {
+    const { user } = useContext(UserContext);
 
     console.log(employee.id)
-    console.log(test)
+    console.log(user)
+
+    // console.log(test)
 
     const data = employee.skills
     const listSkills = data.map((data) => <li key={data.skill_name}>{data.skill_name}</li>)

@@ -1,11 +1,13 @@
 import React from "react"
-// import { Link } from 'react'
+import { useContext } from 'react';
+import { UserContext } from './pages/UserProvider';
+import { Link } from 'react-router-dom'
 
 function Contract({
     contract
 }) {
 
-    console.log(contract)
+    const { user } = useContext(UserContext)
 
     return (
         <div className="card-spacing">
@@ -15,10 +17,10 @@ function Contract({
                         <li className="card-li">
                             <div>
                                 <div>
-                                {/* <Link to={`/management/contracts/${contract.id}`}>
-                                    
-                                </Link> */}
-                                <h3>{contract.contract_title}</h3>
+                                <Link to={`/management/contracts/${contract.id}`}>
+                                    <h3>{contract.contract_title}</h3>
+                                </Link>
+
                                     <p>CV: ${contract.contract_value}</p>
                                     <p>Owner: {contract.user.username}</p>
                                     <p>Project: {contract.project.project_name}</p>

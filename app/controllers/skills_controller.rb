@@ -1,4 +1,5 @@
 class SkillsController < ApplicationController
+    include ActionController::Cookies
     
     skip_before_action :authenticated_user
 
@@ -13,7 +14,7 @@ class SkillsController < ApplicationController
     end
 
     def create
-        new_skill = Skill.create!(skill_params)
+        new_skill = Skill.create(skill_params)
         render json: new_skill, status: :created
     end
 

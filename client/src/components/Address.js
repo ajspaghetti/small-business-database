@@ -12,7 +12,7 @@ function Address({
                     <ul className="cards-ul">
                         <li className="card-li">
                             <Link to={`/addresses/${address.id}`}>
-                            <h3>Address</h3>
+                                <h3>Address</h3>
                             </Link>
                             <div>
                                 <p>{address.line_one}</p>
