@@ -1,4 +1,5 @@
 class SubcontractorsController < ApplicationController
+    include ActionController::Cookies
 
     skip_before_action :authenticated_user
 

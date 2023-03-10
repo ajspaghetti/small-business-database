@@ -1,4 +1,5 @@
 class SkillsController < ApplicationController
+    include ActionController::Cookies
     
     skip_before_action :authenticated_user
 

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    include ActionController::Cookies
     
     skip_before_action :authenticated_user, only: [:create, :show]
     before_action :authorize, only: [:update, :destroy]

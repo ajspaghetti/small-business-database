@@ -1,12 +1,16 @@
-import React from "react"
+import React, {useContext} from "react"
+import { UserContext } from './UserProvider'
 import { Link } from "react-router-dom"
 import logoNoBackground from '../../assets/logoNoBackground.png'
 import "../../styles/App.css"
 
 function Navbar({
   onLogOut,
-  currentUser,
+  // user,
 }) {
+  const { user, logout } = useContext(UserContext)
+
+  // console.log(user)
 
   function handleLogOut() {
     fetch('/logout', {
@@ -20,45 +24,75 @@ function Navbar({
 
   return (
     <nav className="navbar-container">
-          <ul className="nav-links">
+          
             
-            <a href="/" to="/">
+            
+            {user !== null ? 
+            <ul className="nav-links">
+            <Link to="/">
               <img className="nav-logo" src={logo} title="Home" alt="navLogo"></img>
-            </a>
-            <li>          
-              <a className="nav-item"href="/management/contracts" to="/management/contracts">Contracts</a>
+            </Link>
+            <li>   
+              <Link to="/management/contracts">
+                <button>Contracts</button>
+              </Link>         
             </li>
             <li>
-              <a className="nav-item"href="/management/projects" to="/management/projects">Projects</a>
+              <Link to="/management/projects">
+                <button>Projects</button>
+              </Link>
             </li>
             <li>
-              <a className="nav-item"href="/management/client_companies" to="/management/client_companies">Companies</a>
+              <Link to="/management/client_companies">
+                <button>Companies</button>
+              </Link>
             </li>
             <li>
-              <a className="nav-item"href="/management/clients" to="/management/clients">Clients</a>
+              <Link  to="/management/clients">
+                <button>Clients</button>
+              </Link>
             </li>
             <li>
-              <a className="nav-item"href="/hris/employees" to="/hris/employees">Employees</a>
+              <Link to="/hris/employees">
+                <button>Employees</button>
+              </Link>
             </li>
             <li>
-              <a className="nav-item"href="/hris/subcontractors" to="/hris/subcontractors">Subcontractors</a>
+              <Link to="/hris/subcontractors">
+                <button>Subcontractors</button>
+              </Link>
             </li>
             <li>
-              <a className="nav-item"href="/matrix/skills" to="/matrix/skills">Skills</a>
-            </li>
-            {/* <li>
-              <a className="nav-item"href="/users/" to={`/users/${currentUser.id}`}>Accounts</a>
-            </li> */}
-            <li>
-              <a className="nav-item"href="/" to="/logout" onClick={handleLogOut}>Log Out</a>
+              <Link to="/matrix/skills">
+                <button>Skills</button>
+              </Link>
             </li>
             <li>
-              <a className="nav-item"href="/login" to="/login">Login</a>
+              <Link to="/logout" >
+                <button onClick={logout}>Log Out</button>
+              </Link>
             </li>
-            <li>
-              <a className="nav-item"href="/register" to ="/register">Register</a>
-            </li>
-          </ul>
+            <div>
+              <p><br/><br/></p>
+            </div>
+            </ul>
+            
+              :
+
+            <ul className="nav-links-login">
+              <Link href="/" to="/">
+                <img className="nav-logo" src={logo} title="Home" alt="navLogo"></img>
+              </Link>
+              <li>
+                <a className="nav-item"href="/" to="/">Login</a>
+              </li>
+              <li>
+                <a className="nav-item"href="/register" to ="/register">Register</a>
+              </li>
+              </ul>
+            }
+            
+            
     </nav>
   )
 }
