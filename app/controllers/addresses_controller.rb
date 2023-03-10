@@ -14,7 +14,7 @@ class AddressesController < ApplicationController
     end
 
     def create
-        new_address = Address.create!(address_params)
+        new_address = Address.create(address_params)
         render json: new_address, status: :created
     end
 

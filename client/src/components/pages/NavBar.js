@@ -68,7 +68,7 @@ function Navbar({
               </Link>
             </li>
             <li>
-              <Link to="/logout" >
+              <Link to="/" >
                 <button onClick={logout}>Log Out</button>
               </Link>
             </li>

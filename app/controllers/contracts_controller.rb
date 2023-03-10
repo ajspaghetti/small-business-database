@@ -14,7 +14,7 @@ class ContractsController < ApplicationController
     end
 
     def create
-        new_contract = Contract.create!(contract_params)
+        new_contract = Contract.create(contract_params)
         render json: new_contract, status: :created
     end
 

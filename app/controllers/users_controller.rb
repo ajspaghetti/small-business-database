@@ -8,13 +8,13 @@ class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     def create
-        @user = User.new(user_params)
-        if @user.save
-            session[:user_id] = @user.id
-            render json: @user, status: :created
-        else
-            render json: { error: "User not found" }, status: :not_found
-        end
+        user = User.create!(user_params)
+        # if user.save
+        session[:user_id] = user.id
+        render json: user, status: :created
+        # else
+            # render json: { error: "User not found" }, status: :not_found
+        # end
     end
 
     def show
@@ -30,9 +30,9 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.find(params[:id])
-        if @user.update(user_params)
-            render json: @user, status: :accepted
+        user = User.find(params[:id])
+        if user.update(user_params)
+            render json: user, status: :accepted
         else
             render json: { error: "User update failed"}, status: :invalid
         end

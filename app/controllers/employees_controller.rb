@@ -16,7 +16,7 @@ class EmployeesController < ApplicationController
     end
 
     def create
-        new_employee = Employee.create!(employee_params)
+        new_employee = Employee.create(employee_params)
         render json: new_employee, status: :created
     end
 
